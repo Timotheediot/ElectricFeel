@@ -1,0 +1,28 @@
+.content-div {
+  background-image: url("../../assets/img/porscheModel.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.content-div:hover {
+  background-image: linear-gradient(
+      to right,
+      rgb(255, 250, 102),
+      hsla(160, 64%, 43%, 0.801)
+    ),
+    url("../../assets/img/porscheModel.png");
+}
+
+.image-cover {
+  height: 260px;
+}
+/*
+    -remove the classes below if you have the 'group-hover'property added in your tailwind config file
+    -also remove the class from the html template
+    */
+.content-div:hover .fd-cl {
+  opacity: 0.25;
+}
+.content-div:hover .fd-sh {
+  opacity: 1;
+}
