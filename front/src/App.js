@@ -1,11 +1,12 @@
 import React from "react";
+import Navbar from "./Components/navbar/navbar";
 
-function App() {
+const App = () => {
   return (
-    <div className="bg-black">
-      <p className="text-2xl text-yellow-300">Nos Anciennes</p>
+    <div>
+      <Navbar />
     </div>
   );
-}
+};
 
 export default App;
