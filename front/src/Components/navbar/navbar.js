@@ -1,5 +1,6 @@
 import React from "react";
 import SearchBar from "../searchBar/searchBar";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -9,9 +10,17 @@ const Navbar = () => {
       </p>
       <SearchBar />
       <div className="flex justify-end text-xl mr-10 font-light">
-        <p className="mr-10 cursor-pointer hover:text-orange-400">Nouveautés</p>
-        <p className="mr-10 cursor-pointer hover:text-orange-400">Véhicules</p>
-        <p className="cursor-pointer hover:text-orange-400">Contact</p>
+        <Link to="/">
+          <p className="mr-10 cursor-pointer hover:text-orange-400">Accueil</p>
+        </Link>
+        <Link to="/vehicules">
+          <p className="mr-10 cursor-pointer hover:text-orange-400">
+            Véhicules
+          </p>
+        </Link>
+        <Link to="/contact">
+          <p className="cursor-pointer hover:text-orange-400">Contact</p>
+        </Link>
       </div>
     </div>
   );

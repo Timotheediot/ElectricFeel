@@ -7,7 +7,7 @@ const Form = () => {
       <div className="w-full md:w-1/2 lg:w-1/2">
         <img src={Porsche} alt="porsche4s" />
         <h2 className="italic text-orange-700 text-3xl font-light text-center">
-          "Trouvez votre nouvelle voiture électrique en toute simplicité"
+          "Trouvez votre voiture électrique de vos besoins"
         </h2>
       </div>
       <div className="w-full md:w-1/2 bg-green-800 rounded-md p-10 m-10">
@@ -46,6 +46,12 @@ const Form = () => {
           type="search"
           name="search"
           placeholder="Temps de rechargement"
+        />
+        <input
+          className="w-full text-gray-600 border-2 border-gray-400 bg-gray-800 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mb-10"
+          type="search"
+          name="search"
+          placeholder="Localiser les Bornes à proximités Latitude, longitude"
         />
         <input
           type="button"

@@ -1,14 +1,20 @@
 import React from "react";
-import Card from "./Components/card/card";
 import Navbar from "./Components/navbar/navbar";
-import Form from "./Components/form/form";
+import Accueil from "./Components/accueil/accueil";
+import Vehicules from "./Components/vehicules/vehicules";
+import Contact from "./Components/contact/contact";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const App = () => {
   return (
     <div className="w-full h-screen bg-gray-900">
-      <Navbar />
+      <Router>
+        <Navbar />
+        <Route exact path="/" component={Accueil} />
+        <Route path="/vehicules" component={Vehicules} />
+        <Route path="/contact" component={Contact} />
+      </Router>
       {/* <Card /> */}
-      <Form />
     </div>
   );
 };
