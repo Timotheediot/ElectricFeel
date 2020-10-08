@@ -18,22 +18,18 @@ const Card = () => {
           </div>
           <div className="py-8 px-4 bg-white  rounded-b-md fd-cl group-hover:opacity-25">
             <span className="block text-lg text-gray-800 font-bold tracking-wide">
-              Title
+              Vehicule Name
             </span>
             <span className="block text-gray-600 text-sm">
               Consectetur duis occaecat duis nisi id eiusmod tempor fugiat
               ullamco. Lorem pariatur magna irure voluptate magna elit voluptate
-              ipsum occaecat magna quis. Officia eu in proident exercitation
-              fugiat. Dolore irure anim laborum voluptate cillum adipisicing
-              cupidatat ad. Proident officia consequat irure excepteur laboris
-              fugiat ea ea tempor in aliquip laborum anim eiusmod. Irure laboris
-              proident proident nostrud.
+              ipsum occaecat magna quis.
             </span>
           </div>
         </div>
         <div className="absolute opacity-0 fd-sh group-hover:opacity-100">
           <span className="text-3xl font-bold text-white tracking-wider leading-relaxed font-sans">
-            Auto Title
+            Auto Name
           </span>
           <div className="pt-8 text-center">
             <button className="text-center rounded-lg p-4 bg-white  text-gray-700 font-bold text-lg">
