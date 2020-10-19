@@ -9,7 +9,7 @@ const bycrypt = require("bcryptjs");
 
 // ENTRY POINT :
 router.get("/", (req, res) => {
-  res.send("Route=/user").status(200);
+  res.send("tu es sur la route user").status(200);
 });
 
 // Example of route and request for GET ALL USERS
