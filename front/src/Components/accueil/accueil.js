@@ -1,10 +1,11 @@
 import React from "react";
-import Card from "../card/card";
+
+import Form from "../form/form";
 
 const Accueil = () => {
   return (
     <div>
-      <Card />
+      <Form />
     </div>
   );
 };
