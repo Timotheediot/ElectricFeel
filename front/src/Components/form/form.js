@@ -2,6 +2,7 @@ import React from "react";
 import InputBrand from "../input/inputBrand";
 import InputModel from "../input/inputModel";
 import InputSeat from "../input/inputSeat";
+import Price from "../input/price";
 import Porsche from "../../assets/img/porscheModel.png";
 
 const Form = () => {
@@ -20,12 +21,7 @@ const Form = () => {
         <InputBrand />
         <InputModel />
         <InputSeat />
-        <input
-          className="w-full text-gray-600 border-2 border-gray-400 bg-gray-800 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mb-10"
-          type="select"
-          name="search"
-          placeholder="Prix Max"
-        />
+        <Price />
         <input
           className="w-full text-gray-600 border-2 border-gray-400 bg-gray-800 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mb-10"
           type="select"

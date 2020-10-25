@@ -38,6 +38,16 @@ router.get("/seat", (req, res) => {
     if (err) {
       res.status(500).send(`Erreur lors de la récupération des places`);
     } else {
+      res.json(results.data);
+    }
+  });
+});
+
+router.get("/price", (req, res) => {
+  connection.query(`SELECT prix FROM auto`, (err, results) => {
+    if (err) {
+      res.status(500).send(`Erreur lors de la récupération des prix des autos`);
+    } else {
       res.json(results);
     }
   });
