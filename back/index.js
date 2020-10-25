@@ -2,7 +2,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-const connection = require("./config/config");
+
 const bodyParser = require("body-parser");
 const route = require("./routes/index");
 const port = 4000;
@@ -26,10 +26,11 @@ app.get("/", (req, res) => {
 // And will be define in the routes directory by user.js
 // Result :
 app.use("/user", route.user);
+app.use("/auto", route.auto);
 
 app.listen(port, (err) => {
   if (err) {
-    throw new Error("something bad happened...");
+    throw new Error("Something bad happened...");
   }
-  console.log(`server is listening on ${port}`);
+  console.log(`Server is listening on ${port}`);
 });
