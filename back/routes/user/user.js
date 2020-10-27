@@ -1,23 +1,20 @@
 // REQUIRE what we need :
-const bycrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 const connection = require("../../config/config");
 const express = require("express");
 const router = express.Router();
 
-// In this file, we are comming from 'http://localhost:4000/routes_for_user' as define in ../../index.js line 28
-// So all routes from here beginning by '/routes_for_user', it is what we call 'ENTRY POINT'
-
 router.use(express.json());
 
-const users = [];
-
 // ENTRY POINT :
+
 router.get("/", (req, res) => {
   res.send("On the road user").status(200);
 });
 
+// REGISTER
 router.post("/register", async (req, res) => {
-  const hashedPassword = await bycrypt.hash(req.body.password, 10);
+  const hashedPassword = await bcrypt.hash(req.body.password, 10);
   const user = {
     email: req.body.email,
     password: hashedPassword,
@@ -32,24 +29,45 @@ router.post("/register", async (req, res) => {
   });
 });
 
+// LOGIN
 router.post("/login", async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const user = await connection("users").first("*").where({ email: email });
-    if (user) {
-      const validPass = await bycrypt.compare(password, user.hash);
-      if (validPass) {
-        res.status(200).json("Valid email and password");
+  const email = req.body.email;
+  const password = req.body.password;
+  connection.query(
+    `SELECT * FROM user WHERE email = ?`,
+    [email],
+    async (error, results) => {
+      if (error) {
+        res.send({
+          code: 400,
+          failed: "error ocurred",
+        });
       } else {
-        res.json("Wrong pass!");
+        if (results.length > 0) {
+          const comparaision = await bcrypt.compare(
+            password,
+            results[0].password
+          );
+          if (comparaision) {
+            res.send({
+              code: 200,
+              success: "Login sucessfull",
+            });
+          } else {
+            res.send({
+              code: 204,
+              success: "Email and password does not match",
+            });
+          }
+        } else {
+          res.send({
+            code: 206,
+            success: "Email does not exits",
+          });
+        }
       }
-    } else {
-      res.status(404).json("User not found");
     }
-  } catch (error) {
-    console.log(error);
-    res.status(500).send("Something broke!");
-  }
+  );
 });
 
 module.exports = router;
