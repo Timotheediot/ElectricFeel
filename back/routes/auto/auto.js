@@ -9,12 +9,10 @@ router.get("/", (req, res) => {
 });
 
 router.get("/brand", (req, res) => {
-  connection.query(`SELECT * FROM marque`, (err, results) => {
+  connection.query(`SELECT * FROM brand`, (err, results) => {
     if (err) {
       console.log(err);
-      res
-        .status(500)
-        .send(`Erreur lors de la récupération des marques d'autos`);
+      res.status(500).send(`Error brand lists`);
     } else {
       res.json(results);
     }
@@ -22,7 +20,7 @@ router.get("/brand", (req, res) => {
 });
 
 router.get("/brand/model", (req, res) => {
-  connection.query(`SELECT * FROM marque`, (err, results) => {
+  connection.query(`SELECT * FROM brand`, (err, results) => {
     if (err) {
       res
         .status(500)
@@ -34,7 +32,7 @@ router.get("/brand/model", (req, res) => {
 });
 
 router.get("/seat", (req, res) => {
-  connection.query(`SELECT place FROM place`, (err, results) => {
+  connection.query(`SELECT numberSeat FROM auto`, (err, results) => {
     if (err) {
       res.status(500).send(`Erreur lors de la récupération des places`);
     } else {
@@ -44,7 +42,17 @@ router.get("/seat", (req, res) => {
 });
 
 router.get("/price", (req, res) => {
-  connection.query(`SELECT prix FROM auto`, (err, results) => {
+  connection.query(`SELECT price FROM auto`, (err, results) => {
+    if (err) {
+      res.status(500).send(`Erreur lors de la récupération des prix des autos`);
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+router.get("/color", (req, res) => {
+  connection.query(`SELECT color FROM auto`, (err, results) => {
     if (err) {
       res.status(500).send(`Erreur lors de la récupération des prix des autos`);
     } else {
