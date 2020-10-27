@@ -17,20 +17,19 @@ router.get("/", (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  try {
-    const hashedPassword = await bycrypt.hash(req.body.password, 10);
-    const user = {
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      password: hashedPassword,
-    };
-    users.push(user);
-    console.log("users:", users);
-    res.status(201).send();
-  } catch {
-    res.status(500).send();
-  }
+  const hashedPassword = await bycrypt.hash(req.body.password, 10);
+  const user = {
+    email: req.body.email,
+    password: hashedPassword,
+  };
+  connection.query(`INSERT INTO user SET ?`, user, (err, results) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(`Error user register`);
+    } else {
+      res.json(results);
+    }
+  });
 });
 
 router.post("/login", async (req, res) => {
