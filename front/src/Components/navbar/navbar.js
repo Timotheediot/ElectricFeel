@@ -21,6 +21,9 @@ const Navbar = () => {
         <Link to="/contact">
           <p className="cursor-pointer hover:text-orange-400">Contact</p>
         </Link>
+        <Link to="/login">
+          <p className="cursor-pointer hover:text-orange-400">Login</p>
+        </Link>
       </div>
     </div>
   );

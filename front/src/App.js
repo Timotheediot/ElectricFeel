@@ -1,8 +1,9 @@
 import React from "react";
-import Navbar from "./Components/navbar/navbar";
 import Accueil from "./Components/accueil/accueil";
-import Vehicules from "./Components/vehicules/vehicules";
 import Contact from "./Components/contact/contact";
+import Login from "./Components/login/login";
+import Navbar from "./Components/navbar/navbar";
+import Vehicules from "./Components/vehicules/vehicules";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const App = () => {
@@ -13,8 +14,8 @@ const App = () => {
         <Route exact path="/" component={Accueil} />
         <Route path="/vehicules" component={Vehicules} />
         <Route path="/contact" component={Contact} />
+        <Route path="/login" component={Login} />
       </Router>
-      {/* <Card /> */}
     </div>
   );
 };

@@ -19,7 +19,7 @@ router.get("/brand", (req, res) => {
   });
 });
 
-router.get("/brand/model", (req, res) => {
+router.get("/brand/auto", (req, res) => {
   connection.query(`SELECT * FROM brand`, (err, results) => {
     if (err) {
       res
