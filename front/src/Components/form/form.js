@@ -7,7 +7,7 @@ import Porsche from "../../assets/img/porscheModel.png";
 
 const Form = () => {
   return (
-    <div className="w-full flex flex-wrap md:flex-no-wrap">
+    <div className="w-full h-full flex flex-wrap md:flex-no-wrap">
       <div className="w-full md:w-1/2 lg:w-1/2 ml-10">
         <img src={Porsche} alt="porsche4s" />
         <h2 className="uppercase text-center md:text-left text-orange-600 text-3xl font-bold">

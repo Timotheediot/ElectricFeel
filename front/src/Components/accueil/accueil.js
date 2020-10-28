@@ -3,7 +3,7 @@ import Form from "../form/form";
 
 const Accueil = () => {
   return (
-    <div>
+    <div className="h-full">
       <Form />
     </div>
   );
