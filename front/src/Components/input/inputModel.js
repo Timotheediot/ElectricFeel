@@ -7,7 +7,6 @@ const InputModel = () => {
   const fetchInputValue = async () => {
     const res = await axios.get("http://localhost:4000/auto/brand/auto");
     setInputValue(res.data);
-    console.log(res.data);
   };
 
   useEffect(() => {

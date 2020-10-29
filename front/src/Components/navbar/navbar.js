@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <header className="lg:px-16 px-6 bg-green-800 flex flex-wrap items-center lg:py-0 py-2 shadow-sm">
+      <header className="lg:px-16 px-6 bg-brown-700 flex flex-wrap items-center lg:py-0 py-2 shadow-sm">
         <div className="flex-1 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-100 tracking-wider">
             ELECTRIC FEEL

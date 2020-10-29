@@ -17,9 +17,9 @@ const Form = () => {
           intelligente
         </h2>
       </div>
-      <div className="w-full md:w-1/2 bg-green-800 rounded-md p-10 m-10">
+      <div className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 m-10">
         <InputBrand />
-        <InputModel />
+        {/* <InputModel /> */}
         <InputSeat />
         <Price />
         <input

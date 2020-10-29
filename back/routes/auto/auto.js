@@ -5,7 +5,14 @@ const router = express.Router();
 
 // ENTRY POINT :
 router.get("/", (req, res) => {
-  res.send("tu es sur la route auto").status(200);
+  connection.query(`SELECT * FROM auto`, (err, results) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(`Error auto list`);
+    } else {
+      res.json(results);
+    }
+  });
 });
 
 router.get("/brand", (req, res) => {
@@ -32,7 +39,7 @@ router.get("/brand/auto", (req, res) => {
 });
 
 router.get("/seat", (req, res) => {
-  connection.query(`SELECT numberSeat FROM auto`, (err, results) => {
+  connection.query(`SELECT seat FROM auto`, (err, results) => {
     if (err) {
       res.status(500).send(`Erreur lors de la récupération des places`);
     } else {
