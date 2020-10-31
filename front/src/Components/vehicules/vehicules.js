@@ -8,7 +8,6 @@ const Vehicules = () => {
   const fetchInputValue = async () => {
     const res = await axios.get("http://localhost:4000/auto");
     setListAuto(res.data);
-    console.log(res.data);
   };
 
   useEffect(() => {
@@ -19,8 +18,8 @@ const Vehicules = () => {
     <div>
       <div className="flex flex-wrap w-fulls justify-around">
         {listAuto &&
-          listAuto.map((auto) => {
-            return <Card />;
+          listAuto.map((auto, index) => {
+            return <Card key={index} auto={auto} />;
           })}
       </div>
     </div>

@@ -5,14 +5,17 @@ const router = express.Router();
 
 // ENTRY POINT :
 router.get("/", (req, res) => {
-  connection.query(`SELECT * FROM auto`, (err, results) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send(`Error auto list`);
-    } else {
-      res.json(results);
+  connection.query(
+    `SELECT * FROM auto INNER JOIN photo ON auto.id = photo.id_auto`,
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send(`Error auto list`);
+      } else {
+        res.json(results);
+      }
     }
-  });
+  );
 });
 
 router.get("/brand", (req, res) => {

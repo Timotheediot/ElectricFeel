@@ -1,10 +1,32 @@
 import React from "react";
 import "./card.css";
 
-const Card = () => {
+const Card = ({ auto }) => {
   return (
     <div className="py-4">
-      <div className="shadow-lg group container  rounded-md bg-white  max-w-sm flex justify-center items-center  mx-auto content-div bg-gray-800">
+      <div className="max-w-xs rounded overflow-hidden shadow-lg my-2 bg-gray-800 text-gray-100">
+        <img className="w-full" src={auto.url} alt="Sunset in the mountains" />
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+          <p className="text-grey-darker text-base">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Voluptatibus quia, nulla! Maiores et perferendis eaque,
+            exercitationem praesentium nihil.
+          </p>
+        </div>
+        <div class="px-6 py-4">
+          <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">
+            #photography
+          </span>
+          <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">
+            #travel
+          </span>
+          <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker">
+            #winter
+          </span>
+        </div>
+      </div>
+      {/* <div className="shadow-lg group container  rounded-md max-w-sm flex justify-center items-center  mx-auto content-div bg-gray-800">
         <div>
           <div className="w-full image-cover rounded-t-md">
             <div className="p-2 m-4 w-16 h-16 text-center bg-gray-700 rounded-full text-white float-right fd-cl group-hover:opacity-25">
@@ -18,12 +40,10 @@ const Card = () => {
           </div>
           <div className="py-8 px-4 bg-white  rounded-b-md fd-cl group-hover:opacity-25">
             <span className="block text-lg text-gray-800 font-bold tracking-wide">
-              Vehicule Name
+              {auto.auto}
             </span>
             <span className="block text-gray-600 text-sm">
-              Consectetur duis occaecat duis nisi id eiusmod tempor fugiat
-              ullamco. Lorem pariatur magna irure voluptate magna elit voluptate
-              ipsum occaecat magna quis.
+              {auto.description}
             </span>
           </div>
         </div>
@@ -37,7 +57,7 @@ const Card = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
