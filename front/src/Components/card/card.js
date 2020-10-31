@@ -7,12 +7,8 @@ const Card = ({ auto }) => {
       <div className="max-w-xs rounded overflow-hidden shadow-lg my-2 bg-gray-800 text-gray-100">
         <img className="w-full" src={auto.url} alt="Sunset in the mountains" />
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-          <p className="text-grey-darker text-base">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla! Maiores et perferendis eaque,
-            exercitationem praesentium nihil.
-          </p>
+          <div className="font-bold text-xl mb-2">{auto.auto}</div>
+          <p className="text-grey-darker text-base">{auto.description}</p>
         </div>
         <div class="px-6 py-4">
           <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">
