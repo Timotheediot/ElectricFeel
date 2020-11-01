@@ -18,7 +18,7 @@ const Navbar = () => {
       <header className="lg:px-16 px-6 bg-brown-700 flex flex-wrap items-center lg:py-0 py-2 shadow-sm">
         <div className="flex-1 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-100 tracking-wider cursor-pointer hover:text-gray-900">
-            ELECTRIC FEEL
+            <Link to="/">ELECTRIC FEEL</Link>
           </h1>
           <label
             htmlFor="menu-toggle"
