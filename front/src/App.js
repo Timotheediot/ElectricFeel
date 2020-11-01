@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <div className="bg-gray-900 h-full">
+    <div className="bg-gray-900">
       <Router>
         <Navbar />
         <Route exact path="/" component={Accueil} />
