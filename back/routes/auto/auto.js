@@ -6,7 +6,7 @@ const router = express.Router();
 // ENTRY POINT :
 router.get("/", (req, res) => {
   connection.query(
-    `SELECT * FROM auto INNER JOIN photo ON auto.id = photo.id_auto`,
+    `SELECT * FROM auto INNER JOIN photo ON auto.id = photo.id_auto INNER JOIN brand ON id_brand = brand.id INNER JOIN type ON id_type = type.id`,
     (err, results) => {
       if (err) {
         console.log(err);

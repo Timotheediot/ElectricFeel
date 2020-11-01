@@ -43,7 +43,7 @@ const Form = () => {
         <input
           type="button"
           value="CHERCHER"
-          className="w-full px-4 py-2 rounded-md bg-gray-900 text-gray-200 tracking-wider cursor-pointer hover:bg-orange-500"
+          className="w-full px-4 py-2 rounded-md bg-gray-900 text-gray-200 tracking-wider cursor-pointer hover:bg-green-500"
         />
       </div>
     </div>
