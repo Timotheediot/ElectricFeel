@@ -29,7 +29,7 @@ router.get("/seat", (req, res) => {
 });
 
 router.get("/price", (req, res) => {
-  connection.query(`SELECT price FROM auto`, (err, results) => {
+  connection.query(`SELECT * FROM auto WHERE price BETWEEN`, (err, results) => {
     if (err) {
       res.status(500).send(`Erreur lors de la récupération des prix des autos`);
     } else {
