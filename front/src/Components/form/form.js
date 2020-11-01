@@ -4,13 +4,18 @@ import InputModel from "../input/inputModel";
 import InputSeat from "../input/inputSeat";
 import Price from "../input/price";
 import Porsche from "../../assets/img/porscheModel.png";
+import Audi from "../../assets/img/audi-etron-gt.jpg";
 import SliderPrice from "../slider/sliderPrice";
 
 const Form = () => {
   return (
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap">
       <div className="w-full md:w-1/2 lg:w-1/2 ml-10">
-        <img src={Porsche} alt="porsche4s" className="w-full md:mt-10" />
+        <img
+          src={Audi}
+          alt="porsche4s"
+          className="w-auto md:mt-10 rounded-md "
+        />
         <h2 className="uppercase text-center md:text-left text-gray-100 text-3xl font-bold">
           Passer à une
           <br />
