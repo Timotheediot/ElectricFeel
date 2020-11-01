@@ -5,8 +5,8 @@ const Card = ({ auto }) => {
   const descriptionCard = auto.description.substring(0, 220);
 
   return (
-    <div className="py-4 shadow-sm">
-      <div className="max-w-md md:max-w-xs  rounded overflow-hidden shadow-lg my-2 bg-gray-800 text-gray-100 hover:bg-gray-900 cursor-pointer transition duration-100 ease-in-out">
+    <div className="py-4 mx-5 shadow-sm">
+      <div className="max-w-md md:max-w-xs rounded overflow-hidden shadow-lg  bg-gray-800 text-gray-100 hover:bg-gray-900 cursor-pointer transition duration-100 ease-in-out">
         <img
           className="w-full max-h-32"
           src={auto.url}

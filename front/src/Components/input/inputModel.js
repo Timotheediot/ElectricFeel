@@ -5,7 +5,7 @@ const InputModel = () => {
   const [inputValue, setInputValue] = useState("");
 
   const fetchInputValue = async () => {
-    const res = await axios.get("http://localhost:4000/auto/brand/auto");
+    const res = await axios.get("http://localhost:4000/auto");
     setInputValue(res.data);
   };
 
@@ -14,7 +14,7 @@ const InputModel = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <select className="w-full bg-gray-900 text-gray-500 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mb-10">
         {inputValue &&
           inputValue.map((value, index) => {
@@ -25,7 +25,7 @@ const InputModel = () => {
             );
           })}
       </select>
-    </div>
+    </>
   );
 };
 

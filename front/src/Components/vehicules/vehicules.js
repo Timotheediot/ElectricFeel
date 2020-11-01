@@ -16,7 +16,7 @@ const Vehicules = () => {
 
   return (
     <div>
-      <div className="flex flex-wrap w-fulls justify-around">
+      <div className="flex flex-wrap w-fulls justify-around mt-10">
         {listAuto &&
           listAuto.map((auto, index) => {
             return <Card key={index} auto={auto} />;

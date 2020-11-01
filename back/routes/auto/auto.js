@@ -18,35 +18,12 @@ router.get("/", (req, res) => {
   );
 });
 
-router.get("/brand", (req, res) => {
-  connection.query(`SELECT * FROM brand`, (err, results) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send(`Error brand lists`);
-    } else {
-      res.json(results);
-    }
-  });
-});
-
-router.get("/brand/auto", (req, res) => {
-  connection.query(`SELECT * FROM brand`, (err, results) => {
-    if (err) {
-      res
-        .status(500)
-        .send(`Erreur lors de la récupération des marques d'autos`);
-    } else {
-      res.json(results);
-    }
-  });
-});
-
 router.get("/seat", (req, res) => {
-  connection.query(`SELECT seat FROM auto`, (err, results) => {
+  connection.query(`SELECT * FROM auto`, (err, results) => {
     if (err) {
       res.status(500).send(`Erreur lors de la récupération des places`);
     } else {
-      res.json(results.data);
+      res.json(results);
     }
   });
 });
