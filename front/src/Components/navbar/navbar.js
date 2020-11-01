@@ -15,9 +15,9 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <header className="lg:px-16 px-6 bg-brown-700 flex flex-wrap items-center lg:py-0 py-2 shadow-sm">
+      <header className="lg:px-16 px-6 bg-gray-600 flex flex-wrap items-center lg:py-0 py-2 shadow-sm">
         <div className="flex-1 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-100 tracking-wider cursor-pointer hover:text-gray-900">
+          <h1 className="text-2xl font-bold text-gray-900 tracking-wider cursor-pointer hover:text-gray-100">
             <Link to="/">ELECTRIC FEEL</Link>
           </h1>
           <label
@@ -33,24 +33,24 @@ const Navbar = () => {
           id="menu"
         >
           <nav>
-            <ul className="lg:flex items-center justify-between text-lg md:text-base text-gray-100 pt-4 lg:pt-0">
+            <ul className="lg:flex items-center justify-between text-lg md:text-base text-gray-900 pt-4 lg:pt-0">
               <li>
                 <Link to="/">
-                  <p className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange-600 hover:text-gray-900">
+                  <p className=" text-lg lg:p-4 py-3 px-0 block border-b-4 border-transparent hover:border-orange-600 hover:text-gray-100 transition duration-200 ease-in-out">
                     Accueil
                   </p>
                 </Link>
               </li>
               <li>
                 <Link to="/vehicules">
-                  <p className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange-600 hover:text-gray-900">
+                  <p className="text-lg lg:p-4 py-3 px-0 block border-b-4 border-transparent hover:border-orange-600  hover:text-gray-100 transition duration-200 ease-in-out">
                     Véhicules
                   </p>
                 </Link>
               </li>
               <li>
                 <Link to="/contact">
-                  <p className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange-600 hover:text-gray-900">
+                  <p className="text-lg lg:p-4 py-3 px-0 block border-b-4 border-transparent hover:border-orange-600  hover:text-gray-100 transition duration-200 ease-in-out">
                     Contact
                   </p>
                 </Link>
