@@ -1,4 +1,5 @@
 import React from "react";
+import { ReactComponent as LikeIcon } from "../../assets/icons/like.svg";
 import "./card.css";
 
 const Card = ({ auto }) => {
@@ -13,9 +14,10 @@ const Card = ({ auto }) => {
           alt="Sunset in the mountains"
         />
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">
+          <span className="flex justify-between font-bold text-xl mb-2">
             {auto.brand} {auto.auto}
-          </div>
+            <LikeIcon className="w-6 h-6 fill-current text-orange-600" />
+          </span>
           <p className="text-grey-darker text-base">{descriptionCard}…</p>
         </div>
         <div class="px-6 py-4">

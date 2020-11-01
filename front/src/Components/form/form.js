@@ -11,7 +11,7 @@ const Form = () => {
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap">
       <div className="w-full md:w-1/2 lg:w-1/2 ml-10">
         <img src={Porsche} alt="porsche4s" className="w-full md:mt-10" />
-        <h2 className="uppercase text-center md:text-left text-orange-600 text-3xl font-bold">
+        <h2 className="uppercase text-center md:text-left text-gray-100 text-3xl font-bold">
           Passer à une
           <br />
           conduite plus <br />
