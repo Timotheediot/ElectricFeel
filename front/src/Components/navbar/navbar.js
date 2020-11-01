@@ -17,14 +17,14 @@ const Navbar = () => {
     <>
       <header className="lg:px-16 px-6 bg-brown-700 flex flex-wrap items-center lg:py-0 py-2 shadow-sm">
         <div className="flex-1 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-100 tracking-wider">
+          <h1 className="text-2xl font-bold text-gray-100 tracking-wider cursor-pointer hover:text-gray-900">
             ELECTRIC FEEL
           </h1>
           <label
             htmlFor="menu-toggle"
             className="cursor-pointer lg:hidden block"
           >
-            <MenuIcon className="w-10 h-10" />
+            <MenuIcon className="w-10 h-10 fill-current text-gray-900" />
           </label>
         </div>
         <input type="checkbox" className="hidden" id="menu-toggle" />
@@ -33,7 +33,7 @@ const Navbar = () => {
           id="menu"
         >
           <nav>
-            <ul className="lg:flex items-center justify-between text-base text-gray-100 pt-4 lg:pt-0">
+            <ul className="lg:flex items-center justify-between text-lg md:text-base text-gray-100 pt-4 lg:pt-0">
               <li>
                 <Link to="/">
                   <p className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange-600 hover:text-gray-900">
