@@ -3,7 +3,7 @@ import { ReactComponent as LikeIcon } from "../../assets/icons/like.svg";
 import "./card.css";
 
 const Card = ({ auto }) => {
-  const descriptionCard = auto.description.substring(0, 220);
+  const descriptionCard = auto.description !== null && auto.description.substring(0, 220);
 
   return (
     <div className="py-4 mx-5 shadow-sm">
@@ -15,7 +15,7 @@ const Card = ({ auto }) => {
         />
         <div className="px-6 py-4">
           <span className="flex justify-between font-bold text-xl mb-2">
-            {auto.brand} {auto.auto}
+            {auto.brand} {auto.model_auto}
             <LikeIcon className="w-6 h-6 fill-current text-orange-600" />
           </span>
           <p className="text-grey-darker text-base">{descriptionCard}…</p>

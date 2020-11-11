@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import InputBrand from "../input/inputBrand";
 import InputModel from "../input/inputModel";
 import InputSeat from "../input/inputSeat";
@@ -6,8 +6,31 @@ import Price from "../input/price";
 import Porsche from "../../assets/img/porscheModel.png";
 import Audi from "../../assets/img/audi-etron-gt.jpg";
 import SliderPrice from "../slider/sliderPrice";
+import axios from "axios";
 
 const Form = () => {
+  const [autoList, setAutoList] = useState([]);
+  const [brand, setBrand] = useState();
+
+  const [optionListByBrand, setOptionListByBrand] = useState([])
+  const [optionListByModel, setOptionListByModel] = useState([])
+
+  const fetchInputValue = async () => {
+    const res = await axios.get("http://localhost:4000/auto/");
+    setAutoList(res.data);
+  };
+
+  useEffect(() => {
+    fetchInputValue();
+  }, []);
+  useEffect(() => {
+    const filterBrand = () => {
+      const newArrayAuto = autoList.filter(auto => auto.brand == brand)
+      setOptionListByBrand(newArrayAuto)
+    }
+    filterBrand()
+  }, [brand])
+  console.log("brand", brand);
   return (
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap">
       <div className="w-full md:w-1/2 lg:w-1/2 ml-10">
@@ -24,9 +47,17 @@ const Form = () => {
         </h2>
       </div>
       <form className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 m-10">
-        <InputBrand />
-        <InputModel />
-        <InputSeat />
+        <InputBrand
+          autoList={autoList}
+          brand={brand}
+          setBrand={(e) => setBrand(e)}
+        />
+        <InputModel
+          optionListByBrand={optionListByBrand}
+        />
+        <InputSeat
+          optionListByModel={optionListByModel}
+        />
         <Price />
         <SliderPrice />
         <input

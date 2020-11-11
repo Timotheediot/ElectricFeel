@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const InputModel = () => {
-  const [inputValue, setInputValue] = useState([]);
+const InputModel = ({ optionListByBrand }) => {
 
-  const fetchInputValue = async () => {
-    const res = await axios.get("http://localhost:4000/auto");
-    setInputValue(res.data);
-  };
-  inputValue.sort((a, b) => a.auto.localeCompare(b.auto));
 
-  useEffect(() => {
-    fetchInputValue();
-  }, []);
+  function sortByModel(a, b) {
+    if (a && b) {
+      if (a.model_auto < b.model_auto) return -1;
+      if (a.model_auto > b.model_auto) return 1;
+    }
+    return 0;
+  }
+
+  // useEffect(() => {
+  //   fetchInputValue();
+  // }, []);
 
   return (
     <>
       <select className="w-full bg-gray-900 text-gray-500 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mb-10">
-        {inputValue &&
-          inputValue.map((value, index) => {
+        {optionListByBrand &&
+          optionListByBrand.sort(sortByModel).map((value, index) => {
             return (
-              <option value={value.auto} key={index}>
-                {value.auto}
+              <option value={value.model_auto} key={index}>
+                {value.model_auto}
               </option>
             );
           })}
