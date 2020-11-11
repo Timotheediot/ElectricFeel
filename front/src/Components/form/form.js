@@ -7,6 +7,7 @@ import Porsche from "../../assets/img/porscheModel.png";
 import Audi from "../../assets/img/audi-etron-gt.jpg";
 import SliderPrice from "../slider/sliderPrice";
 import axios from "axios";
+import InputAutonomy from "../input/inputAutonomy";
 
 const Form = () => {
   const [autoList, setAutoList] = useState([]);

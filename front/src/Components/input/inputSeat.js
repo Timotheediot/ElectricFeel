@@ -20,7 +20,7 @@ const InputSeat = ({ optionListByModel }) => {
           optionListByModel.map((value, index) => {
             return (
               <option value={value.seat} key={index}>
-                {value.seat}
+                {value.seat} places
               </option>
             );
           })}
