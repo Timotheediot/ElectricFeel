@@ -10,6 +10,7 @@ import axios from "axios";
 import InputAutonomy from "../input/inputAutonomy";
 import InputType from "../input/inputType";
 import SliderAutonomy from "../slider/sliderAutonomy";
+import InputTime from "../input/inputTime";
 
 const Form = () => {
   const [autoList, setAutoList] = useState([]);
@@ -62,13 +63,7 @@ const Form = () => {
         <SliderPrice />
         <hr className="border-2 border-gray-900 rounded-full mb-5" />
         <SliderAutonomy />
-
-        <input
-          className="w-full text-gray-600 bg-gray-900 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mb-10"
-          type="select"
-          name="search"
-          placeholder="Temps de rechargement"
-        />
+        <InputTime autoList={autoList} />
         <input
           className="w-full text-gray-600  bg-gray-900 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mb-10"
           type="search"
