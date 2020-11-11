@@ -6,6 +6,7 @@ import Price from "../input/price";
 import Porsche from "../../assets/img/porscheModel.png";
 import Audi from "../../assets/img/audi-etron-gt.jpg";
 import SliderPrice from "../slider/sliderPrice";
+import InputAutonomy from "../input/inputAutonomy";
 
 const Form = () => {
   return (
@@ -27,7 +28,7 @@ const Form = () => {
         <InputBrand />
         <InputModel />
         <InputSeat />
-        <Price />
+        <InputAutonomy />
         <SliderPrice />
         <input
           className="w-full text-gray-600 bg-gray-900 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mb-10"

@@ -28,6 +28,16 @@ router.get("/brand", (req, res) => {
   });
 });
 
+router.get("/autonomy", (req, res) => {
+  connection.query(`SELECT autonomy FROM auto`, (err, results) => {
+    if (err) {
+      res.status(500).send(`Erreur lors de la récupération des autonomies`);
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 router.get("/seat", (req, res) => {
   connection.query(`SELECT * FROM auto`, (err, results) => {
     if (err) {
