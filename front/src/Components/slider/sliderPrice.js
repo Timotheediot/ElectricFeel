@@ -1,11 +1,42 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Range } from "react-range";
 
 const SliderPrice = () => {
+  const [state, setState] = useState({ values: [0] });
   return (
-    <>
-      <h2 className="text-gray-300 text-lg">Prix</h2>
-      <div className="flex w-full m-auto items-center h-32 justify-center">
+    <div className="outline-none focus:outline-none">
+      <h2 className="text-gray-300 text-lg focus:outline-none">Prix</h2>
+      <Range
+        step={100}
+        min={0}
+        max={"110000"}
+        values={state.values}
+        onChange={(values) => setState({ values })}
+        renderTrack={({ props, children }) => (
+          <div
+            {...props}
+            className="focus:outline-none w-full h-4 bg-gray-900 rounded-full mt-5 mb-2 "
+          >
+            {children}
+          </div>
+        )}
+        renderThumb={({ props }) => (
+          <div
+            {...props}
+            style={{
+              ...props.style,
+              outline: 2,
+            }}
+            className="w-6 h-6 bg-white rounded-full focus:outline-none"
+          />
+        )}
+      />
+      <p className="text-md text-white mb-10 flex justify-end w-full">
+        {state.values}
+        {"€"}
+      </p>
+      {/* <div className="flex w-full m-auto items-center h-32 justify-center">
         <div className="py-1 relative min-w-full">
           <div className="h-2 bg-gray-900 rounded-full">
             <div className="absolute h-2 rounded-full bg-teal-600 w-0"></div>
@@ -17,7 +48,7 @@ const SliderPrice = () => {
               <div className="relative -mt-2 w-1">
                 <div className="absolute z-40 opacity-100 bottom-100 mb-2 left-0 min-w-full">
                   <div className="relative shadow-md">
-                    <div className="bg-prange-600 -mt-8 text-gray-100 truncate text-xs rounded py-1 px-4">
+                    <div className="bg-orange-600 -mt-8 text-gray-100 truncate text-xs rounded py-1 px-4">
                       € 15
                     </div>
                     <svg
@@ -69,8 +100,8 @@ const SliderPrice = () => {
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </div> */}
+    </div>
   );
 };
 

@@ -18,6 +18,16 @@ router.get("/", (req, res) => {
   );
 });
 
+router.get("/brand", (req, res) => {
+  connection.query(`SELECT brand FROM brand`, (err, results) => {
+    if (err) {
+      res.status(500).send(`Erreur lors de la récupération des marques`);
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 router.get("/seat", (req, res) => {
   connection.query(`SELECT * FROM auto`, (err, results) => {
     if (err) {
