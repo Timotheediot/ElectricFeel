@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 
 const InputModel = ({ optionListByBrand }) => {
-
-
   function sortByModel(a, b) {
     if (a && b) {
       if (a.model_auto < b.model_auto) return -1;

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import InputBrand from "../input/inputBrand";
-import InputModel from "../input/inputModel";
+// import InputModel from "../input/inputModel";
 import InputSeat from "../input/inputSeat";
 import Price from "../input/price";
 import Porsche from "../../assets/img/porscheModel.png";
-import Audi from "../../assets/img/audi-etron-gt.jpg";
 import SliderPrice from "../slider/sliderPrice";
 import axios from "axios";
-import InputAutonomy from "../input/inputAutonomy";
 import InputType from "../input/inputType";
 import SliderAutonomy from "../slider/sliderAutonomy";
 import InputTime from "../input/inputTime";
@@ -29,7 +27,7 @@ const Form = () => {
   }, []);
   useEffect(() => {
     const filterBrand = () => {
-      const newArrayAuto = autoList.filter((auto) => auto.brand == brand);
+      const newArrayAuto = autoList.filter((auto) => auto.brand === brand);
       setOptionListByBrand(newArrayAuto);
     };
     filterBrand();
