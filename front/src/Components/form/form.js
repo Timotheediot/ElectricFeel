@@ -8,13 +8,15 @@ import Audi from "../../assets/img/audi-etron-gt.jpg";
 import SliderPrice from "../slider/sliderPrice";
 import axios from "axios";
 import InputAutonomy from "../input/inputAutonomy";
+import InputType from "../input/inputType";
+import SliderAutonomy from "../slider/sliderAutonomy";
 
 const Form = () => {
   const [autoList, setAutoList] = useState([]);
   const [brand, setBrand] = useState();
 
-  const [optionListByBrand, setOptionListByBrand] = useState([])
-  const [optionListByModel, setOptionListByModel] = useState([])
+  const [optionListByBrand, setOptionListByBrand] = useState([]);
+  const [optionListByModel, setOptionListByModel] = useState([]);
 
   const fetchInputValue = async () => {
     const res = await axios.get("http://localhost:4000/auto/");
@@ -26,12 +28,12 @@ const Form = () => {
   }, []);
   useEffect(() => {
     const filterBrand = () => {
-      const newArrayAuto = autoList.filter(auto => auto.brand == brand)
-      setOptionListByBrand(newArrayAuto)
-    }
-    filterBrand()
-  }, [brand])
-  console.log("brand", brand);
+      const newArrayAuto = autoList.filter((auto) => auto.brand == brand);
+      setOptionListByBrand(newArrayAuto);
+    };
+    filterBrand();
+  }, [brand]);
+
   return (
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap">
       <div className="w-full md:w-1/2 lg:w-1/2 ml-10">
@@ -53,20 +55,14 @@ const Form = () => {
           brand={brand}
           setBrand={(e) => setBrand(e)}
         />
-        <InputModel
-          optionListByBrand={optionListByBrand}
-        />
-        <InputSeat
-          optionListByModel={optionListByModel}
-        />
-        <Price />
+        {/* <InputModel optionListByBrand={optionListByBrand} /> */}
+        <InputSeat optionListByModel={optionListByModel} />
+        <InputType autoList={autoList} />
+
         <SliderPrice />
-        <input
-          className="w-full text-gray-600 bg-gray-900 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mb-10"
-          type="select"
-          name="search"
-          placeholder="Autonomie en Kilomètres"
-        />
+        <hr className="border-2 border-gray-900 rounded-full mb-5" />
+        <SliderAutonomy />
+
         <input
           className="w-full text-gray-600 bg-gray-900 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mb-10"
           type="select"

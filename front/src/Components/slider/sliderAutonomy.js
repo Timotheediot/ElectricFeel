@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Range, getTrackBackground } from "react-range";
 
-const SliderPrice = () => {
-  const [state, setState] = useState({ values: [0, 110000] });
+const SliderAutonomy = () => {
+  const [state, setState] = useState({ values: [0, 1000] });
 
-  const STEP = 100;
+  const STEP = 50;
   const MIN = 0;
-  const MAX = 110000;
+  const MAX = 1000;
   return (
     <>
-      <h2 className="text-gray-300 text-lg mb-2">Prix</h2>
+      <h2 className="text-gray-300 text-lg mb-2">Automie en kilomètres</h2>
       <div
         style={{
           display: "flex",
@@ -64,14 +64,14 @@ const SliderPrice = () => {
             </div>
           )}
         />
-        <output className="text-md text-white mt-2 mb-5 " id="output">
+        <output className="text-md text-white mt-2 mb-8 " id="output">
           {state.values[0]}
-          {"€"} - {state.values[1]}
-          {"€"}
+          {"km"} - {state.values[1]}
+          {"km"}
         </output>
       </div>
     </>
   );
 };
 
-export default SliderPrice;
+export default SliderAutonomy;

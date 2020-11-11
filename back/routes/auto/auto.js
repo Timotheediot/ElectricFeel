@@ -39,7 +39,7 @@ router.get("/autonomy", (req, res) => {
 });
 
 router.get("/seat", (req, res) => {
-  connection.query(`SELECT * FROM auto`, (err, results) => {
+  connection.query(`SELECT seat FROM auto`, (err, results) => {
     if (err) {
       res.status(500).send(`Erreur lors de la récupération des places`);
     } else {
