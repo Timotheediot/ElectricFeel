@@ -30,12 +30,7 @@ const SliderPrice = () => {
             <div
               onMouseDown={props.onMouseDown}
               onTouchStart={props.onTouchStart}
-              style={{
-                ...props.style,
-                height: "36px",
-                display: "flex",
-                width: "100%",
-              }}
+              className="flex w-full h-10"
             >
               <div
                 className="w-full h-2 rounded-md"
