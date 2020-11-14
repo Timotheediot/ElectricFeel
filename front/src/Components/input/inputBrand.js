@@ -8,13 +8,13 @@ const InputBrand = ({ setBrand, brand }) => {
     setAutoList(res.data);
   };
 
-  function sortByBrand(a, b) {
+  const sortByBrand = (a, b) => {
     if (a && b) {
       if (a.brand < b.brand) return -1;
       if (a.brand > b.brand) return 1;
     }
     return 0;
-  }
+  };
 
   useEffect(() => {
     fetchInputValue();

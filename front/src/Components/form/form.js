@@ -19,7 +19,7 @@ const Form = () => {
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
-      brand: "Zoé",
+      brand: null,
       seat: null,
       type: null,
     });
