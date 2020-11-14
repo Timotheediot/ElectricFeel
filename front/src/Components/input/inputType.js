@@ -1,23 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const InputType = ({ autoList }) => {
-  console.log("inputType", autoList);
-  //   const [autoSeat, setAutoSeat] = useState([]);
+const InputType = () => {
+  const [autoType, setAutoType] = useState([]);
 
-  //   const fetchInputValue = async () => {
-  //     const res = await axios.get("http://localhost:4000/auto/seat");
-  //     setAutoSeat(res.data);
-  //   };
+  const fetchInputValue = async () => {
+    const res = await axios.get("http://localhost:4000/auto/type");
+    setAutoType(res.data);
+  };
 
-  //   useEffect(() => {
-  //     fetchInputValue();
-  //   }, []);
+  useEffect(() => {
+    fetchInputValue();
+  }, []);
 
   return (
     <>
       <select className="w-full bg-gray-900 text-gray-500 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mb-10">
-        {autoList &&
-          autoList.map((value, index) => {
+        {autoType &&
+          autoType.map((value, index) => {
             return (
               <option value={value.type} key={index}>
                 {value.type}

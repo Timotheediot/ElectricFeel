@@ -18,6 +18,28 @@ router.get("/", (req, res) => {
   );
 });
 
+router.post("/filter", (req, res) => {
+  let query = `SELECT * from auto`;
+  console.log(req.body);
+  if (req.body.brand != null) {
+    query = query + ` WHERE  auto = "${req.body.brand}"`;
+  }
+  if (req.body.seat != null) {
+    query = query + ` WHERE seat = ${req.body.seat}`;
+  }
+  if (req.body.type != null) {
+    query = query + ` WHERE type = ${req.body.type}`;
+  }
+  console.log(query);
+  connection.query(query, (err, results) => {
+    if (err) {
+      res.status(500).send(`Erreur lors de la récupération des marques`);
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 router.get("/brand", (req, res) => {
   connection.query(`SELECT brand FROM brand`, (err, results) => {
     if (err) {
@@ -28,8 +50,21 @@ router.get("/brand", (req, res) => {
   });
 });
 
+router.get("/price", (req, res) => {
+  connection.query(
+    `SELECT *  FROM auto WHERE price BETWEEN ${req[0]} AND ${req[1]}`,
+    (err, results) => {
+      if (err) {
+        res.status(500).send(`Erreur lors de la récupération des prices`);
+      } else {
+        res.json(results);
+      }
+    }
+  );
+});
+
 router.get("/autonomy", (req, res) => {
-  connection.query(`SELECT autonomy FROM auto`, (err, results) => {
+  connection.query(`SELECT  DISTINCT * FROM auto_terminal`, (err, results) => {
     if (err) {
       res.status(500).send(`Erreur lors de la récupération des autonomies`);
     } else {
@@ -39,7 +74,17 @@ router.get("/autonomy", (req, res) => {
 });
 
 router.get("/seat", (req, res) => {
-  connection.query(`SELECT seat FROM auto`, (err, results) => {
+  connection.query(`SELECT DISTINCT seat FROM auto`, (err, results) => {
+    if (err) {
+      res.status(500).send(`Erreur lors de la récupération des places`);
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+router.get("/type", (req, res) => {
+  connection.query(`SELECT DISTINCT * FROM type`, (err, results) => {
     if (err) {
       res.status(500).send(`Erreur lors de la récupération des places`);
     } else {

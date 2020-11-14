@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const InputSeat = ({ optionListByModel }) => {
+const InputSeat = () => {
   const [autoSeat, setAutoSeat] = useState([]);
 
   const fetchInputValue = async () => {

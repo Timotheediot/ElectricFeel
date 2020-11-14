@@ -18,8 +18,13 @@ const Form = () => {
   const [optionListByModel, setOptionListByModel] = useState([]);
 
   const fetchInputValue = async () => {
-    const res = await axios.get("http://localhost:4000/auto/");
+    const res = await axios.post("http://localhost:4000/auto/filter/", {
+      brand: "Zoé",
+      seat: null,
+      type: null,
+    });
     setAutoList(res.data);
+    console.log(res.data);
   };
 
   useEffect(() => {
@@ -55,19 +60,14 @@ const Form = () => {
           setBrand={(e) => setBrand(e)}
         />
         {/* <InputModel optionListByBrand={optionListByBrand} /> */}
-        <InputSeat optionListByModel={optionListByModel} />
+        <InputSeat />
         <InputType autoList={autoList} />
 
         <SliderPrice />
         <hr className="border-2 border-gray-900 rounded-full mb-5" />
         <SliderAutonomy />
         <InputTime autoList={autoList} />
-        <input
-          className="w-full text-gray-600  bg-gray-900 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mb-10"
-          type="search"
-          name="search"
-          placeholder="Localiser les bornes à proximités Latitude, longitude"
-        />
+
         <input
           type="button"
           value="CHERCHER"

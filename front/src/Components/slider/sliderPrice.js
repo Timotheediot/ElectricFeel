@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Range, getTrackBackground } from "react-range";
+import axios from "axios";
 
 const SliderPrice = () => {
   const [state, setState] = useState({ values: [0, 110000] });
@@ -7,6 +8,11 @@ const SliderPrice = () => {
   const STEP = 100;
   const MIN = 0;
   const MAX = 110000;
+
+  const fetchInputValue = async () => {
+    const res = await axios.get("http://localhost:4000/auto/price");
+    setState(res.data);
+  };
   return (
     <>
       <h2 className="text-gray-300 text-lg mb-2">Prix</h2>

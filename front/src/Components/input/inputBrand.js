@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const InputBrand = ({ setBrand, brand }) => {
-
-  const [autoList, setAutoList] = useState([]);
+  const [autoList, setAutoList] = useState(["choose your brand"]);
   const fetchInputValue = async () => {
     const res = await axios.get("http://localhost:4000/auto/brand");
     setAutoList(res.data);
@@ -18,17 +17,18 @@ const InputBrand = ({ setBrand, brand }) => {
   }
 
   useEffect(() => {
-    fetchInputValue()
-  }, [])
+    fetchInputValue();
+  }, []);
 
   const handleChange = (e) => {
-    const value = e.target.value
-    setBrand(value)
-  }
+    const value = e.target.value;
+    setBrand(value);
+  };
 
   return (
     <>
-      <select className="w-full bg-gray-900 text-gray-500 h-10 px-5 rounded-lg text-sm focus:outline-none mb-10"
+      <select
+        className="w-full bg-gray-900 text-gray-500 h-10 px-5 rounded-lg text-sm focus:outline-none mb-10"
         onChange={(e) => handleChange(e)}
         value={brand ? brand : ""}
       >
