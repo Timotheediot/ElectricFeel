@@ -29,13 +29,15 @@ router.post("/filter", (req, res) => {
   if (req.body.seat != null) {
     query =
       query +
-      `WHERE seat = ${req.body.seat} INNER JOIN seat s ON auto.id_seat= s.id `;
+      `WHERE seat = "${req.body.seat}" INNER JOIN seat s ON auto.id_seat= s.id `;
   }
   if (req.body.type != null) {
-    query = query + ` WHERE type = ${req.body.type}`;
+    query = query + `WHERE type = "${req.body.type}"`;
   }
   if (req.body.price != null) {
-    query = query + ` WHERE price = ${req.body.price}`;
+    query =
+      query +
+      `WHERE price BETWEEN "${req[0]}" AND "${req[1]}" ${req.body.price}`;
   }
   if (req.body.autonomy != null) {
     query = query + ` WHERE autonomy = ${req.body.price}`;
