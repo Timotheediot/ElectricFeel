@@ -12,7 +12,7 @@ const Form = () => {
   const [autoList, setAutoList] = useState([]);
   const [brand, setBrand] = useState();
 
-  const [optionListByBrand, setOptionListByBrand] = useState([]);
+  // const [optionListByBrand, setOptionListByBrand] = useState([]);
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
@@ -31,13 +31,13 @@ const Form = () => {
     fetchInputValue();
   }, []);
 
-  useEffect(() => {
-    const filterBrand = () => {
-      const newArrayAuto = autoList.filter((auto) => auto.brand === brand);
-      setOptionListByBrand(newArrayAuto);
-    };
-    filterBrand();
-  }, [brand]);
+  // useEffect(() => {
+  //   const filterBrand = () => {
+  //     const newArrayAuto = autoList.filter((auto) => auto.brand === brand);
+  //     setOptionListByBrand(newArrayAuto);
+  //   };
+  //   filterBrand();
+  // }, [brand]);
 
   return (
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap">
@@ -58,7 +58,7 @@ const Form = () => {
           brand={brand}
           setBrand={(e) => setBrand(e)}
         />
-        {/* <InputModel optionListByBrand={optionListByBrand} /> */}
+
         <InputSeat />
         <InputType autoList={autoList} />
 

@@ -18,38 +18,40 @@ router.get("/", (req, res) => {
   );
 });
 
-router.post("/filter", (req, res) => {
+router.get("/filter", (req, res) => {
   let query = `SELECT * from auto `;
   console.log(req.body);
   if (req.body.brand != null) {
     query =
       query +
-      `WHERE auto = "${req.body.brand}" JOIN brand b ON auto.id_brand = b.id`;
+      `WHERE brand = "${req.body.brand}" JOIN brand b ON auto.id_brand = b.id`;
   }
   if (req.body.seat != null) {
     query =
       query +
-      `WHERE seat = "${req.body.seat}" INNER JOIN seat s ON auto.id_seat= s.id `;
+      `WHERE seat = "${req.body.seat}" INNER JOIN seat s ON auto.id_seat= s.id`;
   }
   if (req.body.type != null) {
-    query = query + `WHERE type = "${req.body.type}"`;
+    query =
+      query +
+      `WHERE type = "${req.body.type}" INNER JOIN type t ON auto.id_type=t.id`;
   }
   if (req.body.price != null) {
     query =
       query +
-      `WHERE price BETWEEN "${req[0]}" AND "${req[1]}" ${req.body.price}`;
+      `WHERE price BETWEEN "${req.body.price[0]}" AND "${req.body.price[1]}"`;
   }
   if (req.body.autonomy != null) {
-    query = query + ` WHERE autonomy = ${req.body.price}`;
+    query =
+      query +
+      `WHERE autonomy BETWEEN "${req.body.autonomy[0]}" AND "${req.body.autonomy[1]}"`;
   }
   if (req.body.reloadTime != null) {
     query =
       query +
-      ` LEFT JOIN auto_terminal auterm ON auto.id=auterm.id_auto WHERE reloadTime = ${req.body.reloadTime} `;
+      `WHERE reloadTime = ${req.body.reloadTime} LEFT JOIN auto_terminal auterm ON auto.id=auterm.id_auto`;
   }
-  if (req.body.autonomy != null) {
-    query = query + ` WHERE autonomy = ${req.body.price}`;
-  }
+
   console.log(query);
   connection.query(query, (err, results) => {
     if (err) {
