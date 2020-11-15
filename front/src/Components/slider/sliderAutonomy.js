@@ -63,7 +63,7 @@ const SliderAutonomy = () => {
             </div>
           )}
         />
-        <output className="text-md text-white mt-2 mb-8 " id="output">
+        <output className="text-md text-white mt-2 mb-8 ">
           {state.values[0]}
           {"km"} - {state.values[1]}
           {"km"}

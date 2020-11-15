@@ -3,7 +3,7 @@ import { Range, getTrackBackground } from "react-range";
 import axios from "axios";
 
 const SliderPrice = () => {
-  const [state, setState] = useState({ values: [0, 110000] });
+  const [price, setPrice] = useState({ values: [0, 110000] });
 
   const STEP = 100;
   const MIN = 0;
@@ -11,7 +11,7 @@ const SliderPrice = () => {
 
   const fetchInputValue = async () => {
     const res = await axios.get("http://localhost:4000/auto/price");
-    setState(res.data);
+    setPrice(res.data);
     console.log(res.data);
   };
 
@@ -22,20 +22,14 @@ const SliderPrice = () => {
   return (
     <>
       <h2 className="text-gray-300 text-lg mb-2">Prix</h2>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexWrap: "wrap",
-        }}
-      >
+      <div className="flex justify-center flex-wrap focus:outline-none">
         <Range
-          values={state.values}
+          values={price.values}
           step={STEP}
           min={MIN}
           max={MAX}
           onChange={(values) => {
-            setState({ values });
+            setPrice({ values });
           }}
           renderTrack={({ props, children }) => (
             <div
@@ -48,7 +42,7 @@ const SliderPrice = () => {
                 ref={props.ref}
                 style={{
                   background: getTrackBackground({
-                    values: state.values,
+                    values: price.values,
                     colors: ["#1a202c", "#dd6b20", "#1a202c"],
                     min: MIN,
                     max: MAX,
@@ -75,9 +69,9 @@ const SliderPrice = () => {
             </div>
           )}
         />
-        <output className="text-md text-white mt-2 mb-5 " id="output">
-          {state.values[0]}
-          {"€"} - {state.values[1]}
+        <output className="text-md text-white mt-2 mb-5 ">
+          {price.values[0]}
+          {"€"} - {price.values[1]}
           {"€"}
         </output>
       </div>

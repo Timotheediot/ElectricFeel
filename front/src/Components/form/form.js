@@ -40,7 +40,7 @@ const Form = () => {
   // }, [brand]);
 
   return (
-    <div className="w-full h-full flex flex-wrap md:flex-no-wrap">
+    <div className="w-full h-full flex flex-wrap md:flex-no-wrap focus:outline-none">
       <div className="w-full md:w-1/2 lg:w-1/2 ml-10">
         <img
           src={Porsche}

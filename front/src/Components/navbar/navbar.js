@@ -3,14 +3,6 @@ import { ReactComponent as MenuIcon } from "../../assets/icons/menu.svg";
 import { ReactComponent as UserIcon } from "../../assets/icons/user.svg";
 import { Link } from "react-router-dom";
 
-{
-  /* <style>
-    #menu-toggle:checked + #menu {
-      display: block;
-    }
-  </style> */
-}
-
 const Navbar = () => {
   return (
     <>
@@ -57,7 +49,7 @@ const Navbar = () => {
             </ul>
           </nav>
           <a
-            href="#"
+            href="#user"
             className="lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 cursor-pointer"
           >
             <UserIcon className="rounded-full w-10 h-10 p-1 border-2 border-transparent hover:border-orange-600 transition duration-200 ease-in-out" />
