@@ -32,6 +32,7 @@ const InputBrand = ({ setBrand, brand }) => {
         onChange={(e) => handleChange(e)}
         value={brand ? brand : ""}
       >
+        <option value="">Choisir la marque</option>
         {autoList &&
           autoList.sort(sortByBrand).map((value, index) => {
             return (

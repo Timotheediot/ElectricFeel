@@ -1,7 +1,6 @@
 import React from "react";
 import { ReactComponent as MenuIcon } from "../../assets/icons/menu.svg";
 import { ReactComponent as UserIcon } from "../../assets/icons/user.svg";
-import SearchBar from "../searchBar/searchBar";
 import { Link } from "react-router-dom";
 
 {

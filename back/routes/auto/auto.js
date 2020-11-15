@@ -19,21 +19,39 @@ router.get("/", (req, res) => {
 });
 
 router.post("/filter", (req, res) => {
-  let query = `SELECT * from auto`;
+  let query = `SELECT * from auto `;
   console.log(req.body);
   if (req.body.brand != null) {
-    query = query + ` WHERE  auto = "${req.body.brand}"`;
+    query =
+      query +
+      `WHERE auto = "${req.body.brand}" JOIN brand b ON auto.id_brand = b.id`;
   }
   if (req.body.seat != null) {
-    query = query + ` WHERE seat = ${req.body.seat}`;
+    query =
+      query +
+      `WHERE seat = ${req.body.seat} INNER JOIN seat s ON auto.id_seat= s.id `;
   }
   if (req.body.type != null) {
     query = query + ` WHERE type = ${req.body.type}`;
   }
+  if (req.body.price != null) {
+    query = query + ` WHERE price = ${req.body.price}`;
+  }
+  if (req.body.autonomy != null) {
+    query = query + ` WHERE autonomy = ${req.body.price}`;
+  }
+  if (req.body.reloadTime != null) {
+    query =
+      query +
+      ` LEFT JOIN auto_terminal auterm ON auto.id=auterm.id_auto WHERE reloadTime = ${req.body.reloadTime} `;
+  }
+  if (req.body.autonomy != null) {
+    query = query + ` WHERE autonomy = ${req.body.price}`;
+  }
   console.log(query);
   connection.query(query, (err, results) => {
     if (err) {
-      res.status(500).send(`Erreur lors de la récupération des marques`);
+      res.status(500).send(`Erreur lors de la récupération du filtre`);
     } else {
       res.json(results);
     }
@@ -74,7 +92,7 @@ router.get("/autonomy", (req, res) => {
 });
 
 router.get("/seat", (req, res) => {
-  connection.query(`SELECT DISTINCT seat FROM auto`, (err, results) => {
+  connection.query(`SELECT seat from seat`, (err, results) => {
     if (err) {
       res.status(500).send(`Erreur lors de la récupération des places`);
     } else {

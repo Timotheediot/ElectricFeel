@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import InputBrand from "../input/inputBrand";
-// import InputModel from "../input/inputModel";
 import InputSeat from "../input/inputSeat";
-import Price from "../input/price";
 import Porsche from "../../assets/img/porscheModel.png";
 import SliderPrice from "../slider/sliderPrice";
 import axios from "axios";
@@ -15,13 +13,15 @@ const Form = () => {
   const [brand, setBrand] = useState();
 
   const [optionListByBrand, setOptionListByBrand] = useState([]);
-  const [optionListByModel, setOptionListByModel] = useState([]);
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
       brand: null,
       seat: null,
       type: null,
+      price: null,
+      autonomy: null,
+      reloadTime: null,
     });
     setAutoList(res.data);
     console.log(res.data);
@@ -30,6 +30,7 @@ const Form = () => {
   useEffect(() => {
     fetchInputValue();
   }, []);
+
   useEffect(() => {
     const filterBrand = () => {
       const newArrayAuto = autoList.filter((auto) => auto.brand === brand);
@@ -47,9 +48,7 @@ const Form = () => {
           className="w-auto md:mt-10 rounded-md "
         />
         <h2 className="uppercase text-center md:text-left text-gray-100 text-3xl font-bold">
-          Passer à une
-          <br />
-          conduite plus <br />
+          Passer à une conduite plus <br />
           intelligente
         </h2>
       </div>
