@@ -6,10 +6,11 @@ import Register from "./Components/login/register";
 import Navbar from "./Components/navbar/navbar";
 import Vehicules from "./Components/vehicules/vehicules";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Footer from "./Components/footer/footer";
 
 const App = () => {
   return (
-    <div className="bg-gray-900">
+    <div className="bg-gray-900 content h-full">
       <Router>
         <Navbar />
         <Route exact path="/" component={Accueil} />
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/contact" component={Contact} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Footer />
       </Router>
     </div>
   );

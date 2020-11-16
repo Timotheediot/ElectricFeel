@@ -63,7 +63,7 @@ const Form = () => {
           intelligente
         </h2>
       </div>
-      <form className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 m-10">
+      <form className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 mx-10 mt-10 mb-10">
         <InputBrand
           autoList={autoList}
           brand={brand}

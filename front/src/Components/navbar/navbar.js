@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { ReactComponent as MenuIcon } from "../../assets/icons/menu.svg";
 import { ReactComponent as UserIcon } from "../../assets/icons/user.svg";
+import { ReactComponent as CloseIcon } from "../../assets/icons/cancel.svg";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(true);
+  const handleVisibility = useCallback(() => setIsOpen(!isOpen), [isOpen]);
+
   return (
     <>
       <header className="lg:px-16 px-6 bg-gray-200 flex flex-wrap items-center lg:py-0 py-2 shadow-sm">
@@ -48,14 +52,29 @@ const Navbar = () => {
               </li>
             </ul>
           </nav>
-          <a
-            href="#user"
-            className="lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 cursor-pointer"
+          <button
+            type="button"
+            onClick={handleVisibility}
+            className="lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 cursor-pointer focus:outline-none"
           >
-            <UserIcon className="rounded-full w-10 h-10 p-1 border-2 border-transparent hover:border-orange-600 transition duration-200 ease-in-out" />
-          </a>
+            {isOpen ? <CloseIcon /> : <UserIcon />}
+            <CloseIcon className="rounded-full w-10 h-10 p-1 border-2 border-transparent hover:border-orange-600 transition duration-200 ease-in-out" />
+            {/* <UserIcon className="rounded-full w-10 h-10 p-1 border-2 border-transparent hover:border-orange-600 transition duration-200 ease-in-out" /> */}
+          </button>
         </div>
       </header>
+      <div className={`${isOpen ? "block  bg-gray-200 " : "hidden"} `}>
+        <Link to="/login">
+          <p className=" text-lg lg:p-4 py-3 px-0 block border-b-4 border-transparent hover:border-orange-600  hover:text-orange-600 transition duration-200 ease-in-out">
+            Se connecter
+          </p>
+        </Link>
+        <Link to="/register">
+          <p className=" text-lg lg:p-4 py-3 px-0 block border-b-4 border-transparent hover:border-orange-600  hover:text-orange-600 transition duration-200 ease-in-out">
+            S'inscrire
+          </p>
+        </Link>
+      </div>
     </>
   );
 };

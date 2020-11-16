@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -66,13 +67,12 @@ const Register = () => {
       </form>
       <div className="text-center pt-12 pb-12  text-gray-100">
         <p>
-          Vous n'avez pas de compte ?{" "}
-          <a
-            href="register.html"
-            className="underline font-semibold text-blue-400"
-          >
-            Enregistrez-vous ici.
-          </a>
+          Vous avez pas un compte ?{" "}
+          <Link to="/login">
+            <p className="text-lg lg:p-4 py-3 px-0 block border-b-4 border-transparent hover:border-orange-600  hover:text-orange-600 transition duration-200 ease-in-out">
+              Se connecter ici.
+            </p>
+          </Link>
         </p>
       </div>
     </div>
