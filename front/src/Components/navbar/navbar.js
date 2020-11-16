@@ -57,9 +57,8 @@ const Navbar = () => {
             onClick={handleVisibility}
             className="lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 cursor-pointer focus:outline-none"
           >
-            {isOpen ? <CloseIcon /> : <UserIcon />}
             <CloseIcon className="rounded-full w-10 h-10 p-1 border-2 border-transparent hover:border-orange-600 transition duration-200 ease-in-out" />
-            {/* <UserIcon className="rounded-full w-10 h-10 p-1 border-2 border-transparent hover:border-orange-600 transition duration-200 ease-in-out" /> */}
+            <UserIcon className="rounded-full w-10 h-10 p-1 border-2 border-transparent hover:border-orange-600 transition duration-200 ease-in-out" />
           </button>
         </div>
       </header>
