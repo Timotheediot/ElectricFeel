@@ -13,6 +13,15 @@ const Form = () => {
   const [brand, setBrand] = useState();
 
   // const [optionListByBrand, setOptionListByBrand] = useState([]);
+  const getautoList = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/auto");
+      setAutoList(res.data);
+      console.log(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
@@ -28,9 +37,11 @@ const Form = () => {
   };
 
   useEffect(() => {
+    getautoList();
     fetchInputValue();
   }, []);
 
+  console.log(autoList);
   // useEffect(() => {
   //   const filterBrand = () => {
   //     const newArrayAuto = autoList.filter((auto) => auto.brand === brand);

@@ -2,6 +2,7 @@ import React from "react";
 import Accueil from "./Components/accueil/accueil";
 import Contact from "./Components/contact/contact";
 import Login from "./Components/login/login";
+import Register from "./Components/login/register";
 import Navbar from "./Components/navbar/navbar";
 import Vehicules from "./Components/vehicules/vehicules";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/vehicules" component={Vehicules} />
         <Route path="/contact" component={Contact} />
         <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
       </Router>
     </div>
   );
