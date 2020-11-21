@@ -52,16 +52,15 @@ const Form = () => {
 
   return (
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap focus:outline-none">
-      <div className="w-full md:w-1/2 lg:w-1/2 ml-10">
+      <div className="w-full md:w-1/2 lg:w-1/2  flex flex-wrap items-center justify-center">
+        <h2 className="uppercase text-center md:text-left text-gray-100 text-3xl font-bold pt-20 md:pl-4">
+          Passer à une conduite plus propre.
+        </h2>
         <img
           src={Porsche}
           alt="porsche4s"
-          className="w-auto md:mt-10 rounded-md "
+          className="w-auto md:mb-32 rounded-md"
         />
-        <h2 className="uppercase text-center md:text-left text-gray-100 text-3xl font-bold">
-          Passer à une conduite plus <br />
-          intelligente
-        </h2>
       </div>
       <form className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 mx-10 mt-10 mb-10">
         <InputBrand
