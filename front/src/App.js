@@ -1,6 +1,6 @@
 import React from "react";
 import Accueil from "./Components/accueil/accueil";
-import Contact from "./Components/contact/contact";
+import Favoris from "./Components/favoris/favoris";
 import Login from "./Components/login/login";
 import Register from "./Components/login/register";
 import Navbar from "./Components/navbar/navbar";
@@ -15,7 +15,7 @@ const App = () => {
         <Navbar />
         <Route exact path="/" component={Accueil} />
         <Route path="/vehicules" component={Vehicules} />
-        <Route path="/contact" component={Contact} />
+        <Route path="/contact" component={Favoris} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Footer />
