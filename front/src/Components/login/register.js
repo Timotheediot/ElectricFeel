@@ -20,9 +20,9 @@ const Register = () => {
     });
 
   return (
-    <div className="">
+    <div className="flex justify-center mb-32">
       <form
-        className="w-full flex flex-col pt-3 md:pt-8 md:justify-center justify-center bg-gray-800 mt-10 pb-10"
+        className="w-full flex flex-col md:pt-8 md:justify-center justify-center bg-gray-800 mt-32 pb-10  md:w-5/6 rounded-md"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h2 className="text-gray-100 text-xl text-center w-full px-4 my-5 uppercase">
@@ -62,19 +62,20 @@ const Register = () => {
         <input
           type="submit"
           value="S'INSCRIRE"
-          className="mx-4  md:mx-56 bg-gray-900 text-gray-200 tracking-wider cursor-pointer text-lg hover:bg-green-500 p-2 mt-8 rounded-md"
+          className="mx-4 md:mx-56 bg-gray-900 text-gray-200 tracking-wider cursor-pointer text-lg hover:bg-green-500 p-2 mt-8 rounded-md "
         />
+
+        <div className="text-center pt-12 pb-12  text-gray-100">
+          <p>
+            Vous avez pas un compte ?{" "}
+            <Link to="/login">
+              <p className="text-lg lg:p-4 py-3 px-0 block border-b-4 border-transparent hover:border-orange-600  hover:text-orange-600 transition duration-200 ease-in-out">
+                Se connecter ici.
+              </p>
+            </Link>
+          </p>
+        </div>
       </form>
-      <div className="text-center pt-12 pb-12  text-gray-100">
-        <p>
-          Vous avez pas un compte ?{" "}
-          <Link to="/login">
-            <p className="text-lg lg:p-4 py-3 px-0 block border-b-4 border-transparent hover:border-orange-600  hover:text-orange-600 transition duration-200 ease-in-out">
-              Se connecter ici.
-            </p>
-          </Link>
-        </p>
-      </div>
     </div>
   );
 };
