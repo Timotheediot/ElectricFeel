@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { ReactComponent as LikeIcon } from "../../assets/icons/like.svg";
 
 const Card = ({ auto }) => {
   const descriptionCard =
     auto.description !== null && auto.description.substring(0, 220);
+
+  const [likeActive, setLikeActive] = useState(false);
 
   return (
     <div className="py-4 mx-5 shadow-sm">
@@ -14,7 +16,13 @@ const Card = ({ auto }) => {
         <div className="px-6 py-4">
           <span className="flex justify-between font-bold text-xl mb-2">
             {auto.brand} {auto.model_auto}
-            <LikeIcon className="w-6 h-6 fill-current text-orange-600" />
+            <LikeIcon
+              className={`${
+                likeActive
+                  ? "w-6 h-6 fill-current text-orange-600"
+                  : "w-6 h-6 fill-current text-gray-900"
+              }`}
+            />
           </span>
           <p className="text-grey-darker text-base">{descriptionCard}…</p>
         </div>
