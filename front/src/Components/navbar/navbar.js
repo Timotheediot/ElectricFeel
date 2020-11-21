@@ -69,12 +69,12 @@ const Navbar = () => {
             : "hidden"
         } `}
       >
-        <Link to="/login">
+        <Link to="/login" onClick={handleVisibility}>
           <p className=" pl-6 text-lg lg:p-4 py-3 px-0 block border-b-4 border-transparent hover:border-orange-600  hover:text-orange-600 transition duration-200 ease-in-out">
             Se connecter
           </p>
         </Link>
-        <Link to="/register">
+        <Link to="/register" onClick={handleVisibility}>
           <p className=" pl-6 text-lg lg:p-4 py-3 px-0 block border-b-4 border-transparent hover:border-orange-600  hover:text-orange-600 transition duration-200 ease-in-out">
             S'inscrire
           </p>
