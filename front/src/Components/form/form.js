@@ -12,16 +12,15 @@ const Form = () => {
   const [autoList, setAutoList] = useState([]);
   const [brand, setBrand] = useState();
 
-  // const [optionListByBrand, setOptionListByBrand] = useState([]);
-  const getautoList = async () => {
-    try {
-      const res = await axios.get("http://localhost:4000/auto");
-      setAutoList(res.data);
-      console.log(res.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const getautoList = async () => {
+  //   try {
+  //     const res = await axios.get("http://localhost:4000/auto/filter");
+  //     setAutoList(res.data);
+  //     console.log("autoList is :", autoList);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
@@ -33,22 +32,25 @@ const Form = () => {
       reloadTime: null,
     });
     setAutoList(res.data);
-    console.log(res.data);
+    console.log("Data:", res.data);
   };
 
   useEffect(() => {
-    getautoList();
+    // getautoList();
     fetchInputValue();
   }, []);
 
-  console.log(autoList);
-  // useEffect(() => {
-  //   const filterBrand = () => {
-  //     const newArrayAuto = autoList.filter((auto) => auto.brand === brand);
-  //     setOptionListByBrand(newArrayAuto);
-  //   };
-  //   filterBrand();
-  // }, [brand]);
+  const sortByBrand = (a, b) => {
+    if (a && b) {
+      if (a.brand < b.brand) return -1;
+      if (a.brand > b.brand) return 1;
+    }
+    return 0;
+  };
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setBrand(value);
+  };
 
   return (
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap focus:outline-none">
@@ -58,22 +60,39 @@ const Form = () => {
         </h2>
         <img
           src={Porsche}
-          alt="porsche4s"
+          alt="porsche 4s"
           className="w-auto md:mb-32 rounded-md"
         />
       </div>
       <form className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 mx-10 mt-10 mb-10">
-        <InputBrand
+        {/* <InputBrand
           autoList={autoList}
           brand={brand}
           setBrand={(e) => setBrand(e)}
-        />
-        <InputSeat />
-        <InputType autoList={autoList} />
-        <SliderPrice />
+        /> */}
+
+        <select
+          className="w-full bg-red-900 text-gray-500 h-10 px-5 rounded-lg text-sm focus:outline-none mb-10"
+          onChange={(e) => handleChange(e)}
+          value={autoList ? autoList : ""}
+        >
+          <option value="">Choisir la marque</option>
+          {autoList &&
+            autoList.sort().map((value, index) => {
+              return (
+                <option value={value.brand} key={index}>
+                  {value.brand}
+                </option>
+              );
+            })}
+        </select>
+
+        {/* <InputSeat /> */}
+        {/* <InputType autoList={autoList} /> */}
+        {/* <SliderPrice /> */}
         <hr className="border-2 border-gray-900 rounded-full mb-5" />
-        <SliderAutonomy />
-        <InputTime autoList={autoList} />
+        {/* <SliderAutonomy /> */}
+        {/* <InputTime autoList={autoList} /> */}
         <input
           type="button"
           value="CHERCHER"

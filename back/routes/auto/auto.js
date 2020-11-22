@@ -18,39 +18,39 @@ router.get("/", (req, res) => {
   );
 });
 
-router.get("/filter", (req, res) => {
+router.post("/filter", (req, res) => {
   let query = `SELECT * from auto `;
   console.log(req.body);
   if (req.body.brand != null) {
     query =
       query +
-      `WHERE brand = "${req.body.brand}" JOIN brand b ON auto.id_brand = b.id`;
+      `JOIN brand b ON auto.id_brand = b.id WHERE brand=${req.body.brand} ORDER BY brand`;
   }
-  if (req.body.seat != null) {
-    query =
-      query +
-      `WHERE seat = "${req.body.seat}" INNER JOIN seat s ON auto.id_seat= s.id`;
-  }
-  if (req.body.type != null) {
-    query =
-      query +
-      `WHERE type = "${req.body.type}" INNER JOIN type t ON auto.id_type=t.id`;
-  }
-  if (req.body.price != null) {
-    query =
-      query +
-      `WHERE price BETWEEN "${req.body.price[0]}" AND "${req.body.price[1]}"`;
-  }
-  if (req.body.autonomy != null) {
-    query =
-      query +
-      `WHERE autonomy BETWEEN "${req.body.autonomy[0]}" AND "${req.body.autonomy[1]}"`;
-  }
-  if (req.body.reloadTime != null) {
-    query =
-      query +
-      `WHERE reloadTime = ${req.body.reloadTime} LEFT JOIN auto_terminal auterm ON auto.id=auterm.id_auto`;
-  }
+  // if (req.body.seat != null) {
+  //   query =
+  //     query +
+  //     `WHERE seat = "${req.body.seat}" INNER JOIN seat s ON auto.id_seat= s.id`;
+  // }
+  // if (req.body.type != null) {
+  //   query =
+  //     query +
+  //     `WHERE type = "${req.body.type}" INNER JOIN type t ON auto.id_type=t.id`;
+  // }
+  // if (req.body.price != null) {
+  //   query =
+  //     query +
+  //     `WHERE price BETWEEN "${req.body.price[0]}" AND "${req.body.price[1]}"`;
+  // }
+  // if (req.body.autonomy != null) {
+  //   query =
+  //     query +
+  //     `WHERE autonomy BETWEEN "${req.body.autonomy[0]}" AND "${req.body.autonomy[1]}"`;
+  // }
+  // if (req.body.reloadTime != null) {
+  //   query =
+  //     query +
+  //     `WHERE reloadTime = ${req.body.reloadTime} LEFT JOIN auto_terminal auterm ON auto.id=auterm.id_auto`;
+  // }
 
   console.log(query);
   connection.query(query, (err, results) => {
