@@ -25,7 +25,7 @@ const Card = ({ auto }) => {
               className={`${
                 likeActive
                   ? "w-6 h-6 fill-current text-orange-600 transition duration-500 ease-in-out"
-                  : "w-6 h-6 fill-current text-gray-700 hover:text-gray-800 transition duration-500 ease-in-out"
+                  : "w-6 h-6 fill-current text-gray-800 hover:text-gray-700 transition duration-500 ease-in-out"
               }`}
             />
           </span>

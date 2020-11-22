@@ -38,7 +38,7 @@ const Login = () => {
         <input
           type="submit"
           value="SE CONNECTER"
-          className="mx-4 md:mx-56 bg-gray-900 text-gray-200 tracking-wider cursor-pointer text-lg hover:bg-green-500 p-2 mt-8 rounded-md"
+          className="mx-4 md:mx-56 bg-gray-900 text-gray-200 tracking-wider cursor-pointer text-lg hover:text-gray-900 hover:bg-green-500 p-2 mt-8 rounded-md"
         />
         <div className="text-center pt-12 pb-12  text-gray-100">
           <p>

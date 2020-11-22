@@ -40,7 +40,7 @@ router.post("/login", async (req, res) => {
       if (error) {
         res.send({
           code: 400,
-          failed: "error ocurred",
+          failed: "Error ocurred",
         });
       } else {
         if (results.length > 0) {
