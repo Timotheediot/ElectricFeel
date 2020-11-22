@@ -8,7 +8,7 @@ const Login = () => {
 
   ///////AXIOS GET USER /////////
   const onSubmit = (data) => {
-    axios("http://localhost:4000/user/login", {
+    fetch("http://localhost:4000/user/login", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

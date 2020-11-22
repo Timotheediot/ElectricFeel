@@ -1,23 +1,26 @@
 import React from "react";
-import axios from "axios";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Register = () => {
   const { register, handleSubmit, errors } = useForm();
+  const history = useHistory();
 
   ///////AXIOS PUT USER /////////
   const onSubmit = (data) => {
-    axios("http://localhost:4000/user/register", {
+    fetch("http://localhost:4000/user/register", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-    }).then((res) => {
-      return res.json();
-    });
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then(history.push("/login"));
 
     alert("Votre compte à bien été créé ");
   };
@@ -42,6 +45,9 @@ const Register = () => {
             placeholder="ton@email.com"
             className="appearance-none w-full py-2 mt-1 leading-tight focus:shadow-outline text-gray-600 bg-gray-900 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
           />
+          {errors.password && (
+            <p className=" mt-2 text-sm text-red-600">Email invalide</p>
+          )}
         </div>
 
         <div className="flex flex-col pt-4 px-4">
