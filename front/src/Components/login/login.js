@@ -1,10 +1,31 @@
 import React from "react";
+import axios from "axios";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const { register, handleSubmit, errors } = useForm();
+
+  ///////AXIOS GET USER /////////
+  const onSubmit = (data) => {
+    axios("http://localhost:4000/user/login", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      return res.json();
+    });
+
+    alert("Vous êtes connecté ");
+  };
+
   return (
     <div className="flex justify-center mb-32">
       <form
+        onSubmit={handleSubmit(onSubmit)}
         className="w-full flex flex-col md:pt-8 md:justify-center justify-center bg-gray-800 mt-32 pb-10  md:w-5/6 rounded-md "
         // onSubmit="event.preventDefault();"
       >
@@ -16,6 +37,7 @@ const Login = () => {
             Email
           </label>
           <input
+            ref={register}
             type="email"
             id="email"
             placeholder="ton@email.com"
@@ -28,6 +50,7 @@ const Login = () => {
             Mot de passe
           </label>
           <input
+            ref={register}
             type="password"
             id="password"
             placeholder="Mot de passe"

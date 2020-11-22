@@ -8,7 +8,7 @@ const Register = () => {
 
   ///////AXIOS PUT USER /////////
   const onSubmit = (data) => {
-    fetch("http://localhost:4000/user/register", {
+    axios("http://localhost:4000/user/register", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
