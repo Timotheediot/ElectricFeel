@@ -27,7 +27,6 @@ const Login = () => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full flex flex-col md:pt-8 md:justify-center justify-center bg-gray-800 mt-32 pb-10  md:w-5/6 rounded-md "
-        // onSubmit="event.preventDefault();"
       >
         <h2 className="text-gray-100 text-xl text-center w-full px-4 my-5 uppercase">
           CONNEXION
@@ -43,6 +42,9 @@ const Login = () => {
             placeholder="ton@email.com"
             className="appearance-none w-full py-2 mt-1 leading-tight focus:shadow-outline text-gray-600 bg-gray-900 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
           />
+          {errors.password && (
+            <p className=" mt-2 text-sm text-red-600">Email invalide</p>
+          )}
         </div>
 
         <div className="flex flex-col pt-4 px-4">
@@ -50,12 +52,15 @@ const Login = () => {
             Mot de passe
           </label>
           <input
-            ref={register}
+            ref={register({ required: true, minLength: 8 })}
             type="password"
             id="password"
             placeholder="Mot de passe"
             className="appearance-none w-full py-2 mt-1 leading-tight focus:shadow-outline text-gray-600 bg-gray-900 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
           />
+          {errors.password && (
+            <p className=" mt-2 text-sm text-red-600">Mot de passe invalide</p>
+          )}
         </div>
 
         <input
