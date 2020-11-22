@@ -8,6 +8,17 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
   const handleVisibility = useCallback(() => setIsOpen(!isOpen), [isOpen]);
 
+  let button;
+  if (isOpen) {
+    button = (
+      <UserIcon className="rounded-full w-10 h-10 p-1 border-2 border-transparent hover:border-orange-600" />
+    );
+  } else {
+    button = (
+      <CloseIcon className="rounded-full w-10 h-10 p-1 border-2 border-transparent hover:border-orange-600" />
+    );
+  }
+
   return (
     <>
       <header className="lg:px-16 px-6 bg-gray-200 flex flex-wrap items-center lg:py-0 py-2 shadow-sm">
@@ -57,8 +68,9 @@ const Navbar = () => {
             onClick={handleVisibility}
             className="lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 cursor-pointer focus:outline-none"
           >
-            <CloseIcon className="rounded-full w-10 h-10 p-1 border-2 border-transparent hover:border-orange-600 transition duration-200 ease-in-out" />
-            <UserIcon className="rounded-full w-10 h-10 p-1 border-2 border-transparent hover:border-orange-600 transition duration-200 ease-in-out" />
+            {/* <CloseIcon className="rounded-full w-10 h-10 p-1 border-2 border-transparent hover:border-orange-600 transition duration-200 ease-in-out" />
+            <UserIcon className="rounded-full w-10 h-10 p-1 border-2 border-transparent hover:border-orange-600 transition duration-200 ease-in-out" /> */}
+            {button}
           </button>
         </div>
       </header>

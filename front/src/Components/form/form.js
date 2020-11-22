@@ -68,15 +68,12 @@ const Form = () => {
           brand={brand}
           setBrand={(e) => setBrand(e)}
         />
-
         <InputSeat />
         <InputType autoList={autoList} />
-
         <SliderPrice />
         <hr className="border-2 border-gray-900 rounded-full mb-5" />
         <SliderAutonomy />
         <InputTime autoList={autoList} />
-
         <input
           type="button"
           value="CHERCHER"
