@@ -7,6 +7,10 @@ const Card = ({ auto }) => {
 
   const [likeActive, setLikeActive] = useState(false);
 
+  const addFavoriteCar = () => {
+    setLikeActive(!likeActive);
+  };
+
   return (
     <div className="py-4 mx-5 shadow-sm">
       <div className="max-w-md md:max-w-xs rounded overflow-hidden shadow-lg  bg-gray-800 text-gray-100 hover:bg-gray-900 cursor-pointer transition duration-100 ease-in-out">
@@ -17,10 +21,11 @@ const Card = ({ auto }) => {
           <span className="flex justify-between font-bold text-xl mb-2">
             {auto.brand} {auto.model_auto}
             <LikeIcon
+              onClick={() => addFavoriteCar()}
               className={`${
                 likeActive
-                  ? "w-6 h-6 fill-current text-orange-600"
-                  : "w-6 h-6 fill-current text-gray-900"
+                  ? "w-6 h-6 fill-current text-orange-600 transition duration-500 ease-in-out"
+                  : "w-6 h-6 fill-current text-gray-700 hover:text-gray-800 transition duration-500 ease-in-out"
               }`}
             />
           </span>
