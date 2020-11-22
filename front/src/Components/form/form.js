@@ -12,15 +12,15 @@ const Form = () => {
   const [autoList, setAutoList] = useState([]);
   const [brand, setBrand] = useState();
 
-  // const getautoList = async () => {
-  //   try {
-  //     const res = await axios.get("http://localhost:4000/auto/filter");
-  //     setAutoList(res.data);
-  //     console.log("autoList is :", autoList);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+  const getautoList = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/auto/autoList");
+      setAutoList(res.data);
+      console.log("autoList is :", autoList);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
@@ -35,22 +35,16 @@ const Form = () => {
     console.log("Data:", res.data);
   };
 
-  useEffect(() => {
-    // getautoList();
-    fetchInputValue();
-  }, []);
-
-  const sortByBrand = (a, b) => {
-    if (a && b) {
-      if (a.brand < b.brand) return -1;
-      if (a.brand > b.brand) return 1;
-    }
-    return 0;
-  };
   const handleChange = (e) => {
     const value = e.target.value;
     setBrand(value);
+    fetchInputValue(value);
   };
+
+  useEffect(() => {
+    getautoList();
+    fetchInputValue();
+  }, []);
 
   return (
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap focus:outline-none">
@@ -74,7 +68,7 @@ const Form = () => {
         <select
           className="w-full bg-red-900 text-gray-500 h-10 px-5 rounded-lg text-sm focus:outline-none mb-10"
           onChange={(e) => handleChange(e)}
-          value={autoList ? autoList : ""}
+          value={brand ? brand : ""}
         >
           <option value="">Choisir la marque</option>
           {autoList &&

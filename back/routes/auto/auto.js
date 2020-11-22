@@ -18,9 +18,24 @@ router.get("/", (req, res) => {
   );
 });
 
+router.get("/autoList", (req, res) => {
+  connection.query(
+    `SELECT DISTINCT brand FROM auto JOIN brand b ON auto.id_brand = b.id ORDER BY brand `,
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send(`Error auto list`);
+      } else {
+        res.json(results);
+      }
+    }
+  );
+});
+
 router.post("/filter", (req, res) => {
   let query = `SELECT * from auto `;
   console.log(req.body);
+
   if (req.body.brand != null) {
     query =
       query +
