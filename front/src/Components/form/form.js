@@ -12,7 +12,7 @@ export const AutosContext = React.createContext();
 
 const Form = () => {
   const [autoList, setAutoList] = useState([]);
-  const [brand, setBrand] = useState();
+  const [autoBrand, setAutoBrand] = useState();
 
   // const getautoList = async () => {
   //   try {
@@ -24,9 +24,15 @@ const Form = () => {
   //   }
   // };
 
+  const getAutoList = async () => {
+    const res = await axios.get("http://localhost:4000/auto/brand");
+    setAutoBrand(res.data);
+    console.log("axios brand Form:", res.data);
+  };
+
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
-      brand: brand,
+      brand: null,
       seat: null,
       type: null,
       price: null,
@@ -44,7 +50,7 @@ const Form = () => {
   // };
 
   useEffect(() => {
-    // getautoList();
+    getAutoList();
     fetchInputValue();
   }, []);
 
@@ -61,7 +67,7 @@ const Form = () => {
         />
       </div>
       <form className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 mx-10 mt-10 mb-10">
-        <AutosContext.Provider value={autoList}>
+        <AutosContext.Provider value={autoList} brand={autoBrand}>
           <InputBrand />
           <InputSeat />
           <InputType />

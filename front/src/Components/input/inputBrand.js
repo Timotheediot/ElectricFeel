@@ -1,20 +1,23 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { AutosContext } from "../form/form";
 
 const InputBrand = () => {
   const autoList = useContext(AutosContext);
+  const [brand, setBrand] = useState();
+  const [autoBrand, setAutoBrand] = useState();
   console.log("autoList in inputBrand : ", autoList);
+  console.log("autoBrand in inputBrand : ", autoBrand);
 
-  //   const sortByBrand = (a, b) => {
-  //     if (a && b) {
-  //       if (a.brand < b.brand) return -1;
-  //       if (a.brand > b.brand) return 1;
-  //     }
-  //     return 0;
-  //   };
+  const sortByBrand = (a, b) => {
+    if (a && b) {
+      if (a.brand < b.brand) return -1;
+      if (a.brand > b.brand) return 1;
+    }
+    return 0;
+  };
 
   const handleChange = (e) => {
-    const value = e.target.value;
+    setBrand(e.target.value);
   };
 
   return (
@@ -22,11 +25,11 @@ const InputBrand = () => {
       <select
         className="w-full bg-gray-900 text-gray-500 h-10 px-5 rounded-lg text-sm focus:outline-none mb-10"
         onChange={(e) => handleChange(e)}
-        // value={brand ? brand : ""}
+        value={brand ? brand : null}
       >
         <option value="">Choisir la marque</option>
         {autoList &&
-          autoList.sort().map((value, index) => {
+          autoList.sort(sortByBrand).map((value, index) => {
             return (
               <option value={value.brand} key={index}>
                 {value.brand}
