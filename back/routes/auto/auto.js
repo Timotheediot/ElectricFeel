@@ -18,19 +18,19 @@ router.get("/", (req, res) => {
   );
 });
 
-router.get("/autoList", (req, res) => {
-  connection.query(
-    `SELECT DISTINCT brand FROM auto JOIN brand b ON auto.id_brand = b.id ORDER BY brand `,
-    (err, results) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send(`Error auto list`);
-      } else {
-        res.json(results);
-      }
-    }
-  );
-});
+// router.get("/autoList", (req, res) => {
+//   connection.query(
+//     `SELECT DISTINCT brand FROM auto JOIN brand b ON auto.id_brand = b.id ORDER BY brand `,
+//     (err, results) => {
+//       if (err) {
+//         console.log(err);
+//         res.status(500).send(`Error auto list`);
+//       } else {
+//         res.json(results);
+//       }
+//     }
+//   );
+// });
 
 // router.post("/filter", (req, res) => {
 //   let query = `SELECT * from auto `;
@@ -127,21 +127,11 @@ router.post("/filter", (req, res) => {
 });
 
 router.get("/brand", (req, res) => {
-  connection.query(`SELECT brand FROM brand`, (err, results) => {
-    if (err) {
-      res.status(500).send(`Erreur lors de la récupération des marques`);
-    } else {
-      res.json(results);
-    }
-  });
-});
-
-router.get("/price", (req, res) => {
   connection.query(
-    `SELECT *  FROM auto WHERE price BETWEEN ${req[0]} AND ${req[1]}`,
+    `SELECT * from auto  LEFT JOIN brand b ON auto.id_brand = b.id`,
     (err, results) => {
       if (err) {
-        res.status(500).send(`Erreur lors de la récupération des prices`);
+        res.status(500).send(`Erreur lors de la récupération des marques`);
       } else {
         res.json(results);
       }
@@ -149,54 +139,57 @@ router.get("/price", (req, res) => {
   );
 });
 
-router.get("/autonomy", (req, res) => {
-  connection.query(`SELECT  DISTINCT * FROM auto_terminal`, (err, results) => {
-    if (err) {
-      res.status(500).send(`Erreur lors de la récupération des autonomies`);
-    } else {
-      res.json(results);
-    }
-  });
-});
+// router.get("/price", (req, res) => {
+//   connection.query(
+//     `SELECT *  FROM auto WHERE price BETWEEN ${req[0]} AND ${req[1]}`,
+//     (err, results) => {
+//       if (err) {
+//         res.status(500).send(`Erreur lors de la récupération des prices`);
+//       } else {
+//         res.json(results);
+//       }
+//     }
+//   );
+// });
 
-router.get("/seat", (req, res) => {
-  connection.query(`SELECT seat from seat`, (err, results) => {
-    if (err) {
-      res.status(500).send(`Erreur lors de la récupération des places`);
-    } else {
-      res.json(results);
-    }
-  });
-});
+// router.get("/autonomy", (req, res) => {
+//   connection.query(`SELECT  DISTINCT * FROM auto_terminal`, (err, results) => {
+//     if (err) {
+//       res.status(500).send(`Erreur lors de la récupération des autonomies`);
+//     } else {
+//       res.json(results);
+//     }
+//   });
+// });
 
-router.get("/type", (req, res) => {
-  connection.query(`SELECT DISTINCT * FROM type`, (err, results) => {
-    if (err) {
-      res.status(500).send(`Erreur lors de la récupération des places`);
-    } else {
-      res.json(results);
-    }
-  });
-});
+// router.get("/seat", (req, res) => {
+//   connection.query(`SELECT seat from seat`, (err, results) => {
+//     if (err) {
+//       res.status(500).send(`Erreur lors de la récupération des places`);
+//     } else {
+//       res.json(results);
+//     }
+//   });
+// });
 
-router.get("/price", (req, res) => {
-  connection.query(`SELECT * FROM auto WHERE price BETWEEN`, (err, results) => {
-    if (err) {
-      res.status(500).send(`Erreur lors de la récupération des prix des autos`);
-    } else {
-      res.json(results);
-    }
-  });
-});
+// router.get("/type", (req, res) => {
+//   connection.query(`SELECT DISTINCT * FROM type`, (err, results) => {
+//     if (err) {
+//       res.status(500).send(`Erreur lors de la récupération des places`);
+//     } else {
+//       res.json(results);
+//     }
+//   });
+// });
 
-router.get("/color", (req, res) => {
-  connection.query(`SELECT color FROM auto`, (err, results) => {
-    if (err) {
-      res.status(500).send(`Erreur lors de la récupération des prix des autos`);
-    } else {
-      res.json(results);
-    }
-  });
-});
+// router.get("/price", (req, res) => {
+//   connection.query(`SELECT * FROM auto WHERE price BETWEEN`, (err, results) => {
+//     if (err) {
+//       res.status(500).send(`Erreur lors de la récupération des prix des autos`);
+//     } else {
+//       res.json(results);
+//     }
+//   });
+// });
 
 module.exports = router;

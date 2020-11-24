@@ -26,7 +26,7 @@ const Form = () => {
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
-      brand: null,
+      brand: brand,
       seat: null,
       type: null,
       price: null,
@@ -34,7 +34,7 @@ const Form = () => {
       reloadTime: null,
     });
     setAutoList(res.data);
-    console.log("axios Data:", res.data);
+    console.log("axios Data Form:", res.data);
   };
 
   // const handleChange = (e) => {
