@@ -8,19 +8,21 @@ import InputType from "../input/inputType";
 import SliderAutonomy from "../slider/sliderAutonomy";
 import InputTime from "../input/inputTime";
 
+export const AutosContext = React.createContext();
+
 const Form = () => {
   const [autoList, setAutoList] = useState([]);
   const [brand, setBrand] = useState();
 
-  const getautoList = async () => {
-    try {
-      const res = await axios.get("http://localhost:4000/auto/autoList");
-      setAutoList(res.data);
-      console.log("autoList is :", autoList);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const getautoList = async () => {
+  //   try {
+  //     const res = await axios.get("http://localhost:4000/auto/autoList");
+  //     setAutoList(res.data);
+  //     console.log("autoList is :", autoList);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
@@ -32,17 +34,17 @@ const Form = () => {
       reloadTime: null,
     });
     setAutoList(res.data);
-    console.log("Data:", res.data);
+    console.log("axios Data:", res.data);
   };
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setBrand(value);
-    fetchInputValue(value);
-  };
+  // const handleChange = (e) => {
+  //   const value = e.target.value;
+  //   setBrand(value);
+  //   fetchInputValue(value);
+  // };
 
   useEffect(() => {
-    getautoList();
+    // getautoList();
     fetchInputValue();
   }, []);
 
@@ -59,34 +61,15 @@ const Form = () => {
         />
       </div>
       <form className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 mx-10 mt-10 mb-10">
-        {/* <InputBrand
-          autoList={autoList}
-          brand={brand}
-          setBrand={(e) => setBrand(e)}
-        /> */}
-
-        <select
-          className="w-full bg-red-900 text-gray-500 h-10 px-5 rounded-lg text-sm focus:outline-none mb-10"
-          onChange={(e) => handleChange(e)}
-          value={brand ? brand : ""}
-        >
-          <option value="">Choisir la marque</option>
-          {autoList &&
-            autoList.sort().map((value, index) => {
-              return (
-                <option value={value.brand} key={index}>
-                  {value.brand}
-                </option>
-              );
-            })}
-        </select>
-
-        {/* <InputSeat /> */}
-        {/* <InputType autoList={autoList} /> */}
-        {/* <SliderPrice /> */}
-        <hr className="border-2 border-gray-900 rounded-full mb-5" />
-        {/* <SliderAutonomy /> */}
-        {/* <InputTime autoList={autoList} /> */}
+        <AutosContext.Provider value={autoList}>
+          <InputBrand />
+          <InputSeat />
+          <InputType />
+          <SliderPrice />
+          <hr className="border-2 border-gray-900 rounded-full mb-5" />
+          <SliderAutonomy />
+          <InputTime />
+        </AutosContext.Provider>
         <input
           type="button"
           value="CHERCHER"
