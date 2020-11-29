@@ -6,6 +6,8 @@ const SliderPrice = () => {
   const autoList = useContext(AutosContext);
   const [price, setPrice] = useState({ values: [0, 110000] });
 
+  // const { autoList, setPrice } = useContext(AutosContext);
+
   const STEP = 100;
   const MIN = 0;
   const MAX = 110000;

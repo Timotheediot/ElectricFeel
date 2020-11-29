@@ -12,22 +12,36 @@ export const AutosContext = createContext();
 
 const Form = () => {
   const [autoList, setAutoList] = useState([]);
+  const [brand, setBrand] = useState(null);
+  const [seat, setSeat] = useState(null);
+  const [type, setType] = useState(null);
+  const [price, setPrice] = useState([null, null]);
+  const [autonomy, setAutonomy] = useState(null);
+  const [reloadTime, setReloadTime] = useState(null);
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
-      brand: null,
-      seat: null,
-      type: null,
-      price: null,
-      autonomy: null,
-      reloadTime: null,
+      brand: brand,
+      seat: seat,
+      type: type,
+      price: price,
+      autonomy: autonomy,
+      reloadTime: reloadTime,
     });
     setAutoList(res.data);
+    console.log("autoList in post request", autoList);
   };
 
   useEffect(() => {
     fetchInputValue();
   }, []);
+
+  console.log("brand :", brand);
+  console.log("seat :", seat);
+  console.log("type :", type);
+  console.log("price :", price);
+  console.log("autonomy :", autonomy);
+  console.log("reloadTime :", reloadTime);
 
   return (
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap focus:outline-none">
@@ -42,7 +56,17 @@ const Form = () => {
         />
       </div>
       <form className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 mx-10 mt-10 mb-10">
-        <AutosContext.Provider value={autoList}>
+        <AutosContext.Provider
+          value={{
+            autoList,
+            setBrand,
+            setSeat,
+            setType,
+            setPrice,
+            setAutonomy,
+            setReloadTime,
+          }}
+        >
           <InputBrand />
           <InputSeat />
           <InputType />
