@@ -46,7 +46,7 @@ router.post("/filter", (req, res) => {
   if (req.body.reloadTime != null) {
     joinQuery =
       joinQuery + ` LEFT JOIN auto_terminal at ON auto.id = at.id_auto`;
-    where.push(` at.reloadTime = "${req.body.seat}"`);
+    where.push(` at.reloadTime = "${req.body.reloadTime}"`);
   }
   let whereQuery = "";
   let andQuery = "";

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import InputBrand from "../input/inputBrand";
 import InputSeat from "../input/inputSeat";
 import Porsche from "../../assets/img/porscheModel.png";
@@ -8,35 +8,22 @@ import InputType from "../input/inputType";
 import SliderAutonomy from "../slider/sliderAutonomy";
 import InputTime from "../input/inputTime";
 
-export const AutosContext = React.createContext();
+export const AutosContext = createContext();
 
 const Form = () => {
   const [autoList, setAutoList] = useState([]);
-  const [brand, setBrand] = useState();
-  const [seat, setSeat] = useState();
-  const [type, setType] = useState();
-  const [price, setPrice] = useState([0, 10000]);
-  const [autonomy, setAutonomy] = useState();
-  const [reloadTime, setReloadTime] = useState();
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
-      brand: brand,
-      seat: seat,
-      type: type,
-      price: price,
-      autonomy: autonomy,
-      reloadTime: reloadTime,
+      brand: null,
+      seat: null,
+      type: null,
+      price: null,
+      autonomy: null,
+      reloadTime: null,
     });
     setAutoList(res.data);
-    console.log("postvalue:", res.data);
   };
-
-  // const handleChange = (e) => {
-  //   const value = e.target.value;
-  //   setBrand(value);
-  //   fetchInputValue(value);
-  // };
 
   useEffect(() => {
     fetchInputValue();

@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
+import { AutosContext } from "../form/form";
+
 import { Range, getTrackBackground } from "react-range";
 import axios from "axios";
 
@@ -8,16 +10,6 @@ const SliderPrice = () => {
   const STEP = 100;
   const MIN = 0;
   const MAX = 110000;
-
-  const fetchInputValue = async () => {
-    const res = await axios.get("http://localhost:4000/auto/price");
-    setPrice(res.data);
-    console.log(res.data);
-  };
-
-  useEffect(() => {
-    fetchInputValue();
-  }, []);
 
   return (
     <>

@@ -1,24 +1,20 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useContext } from "react";
+import { AutosContext } from "../form/form";
 
 const InputType = () => {
-  const [autoType, setAutoType] = useState([]);
+  const autoList = useContext(AutosContext);
+  const [type, setType] = useState();
 
-  const fetchInputValue = async () => {
-    const res = await axios.get("http://localhost:4000/auto/type");
-    setAutoType(res.data);
+  const handleChange = (e) => {
+    setType(e.target.value);
   };
-
-  useEffect(() => {
-    fetchInputValue();
-  }, []);
 
   return (
     <>
       <select className="w-full bg-gray-900 text-gray-500 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mb-10">
-      <option value="">Choisir le type</option>
-        {autoType &&
-          autoType.map((value, index) => {
+        <option value="">Choisir le type</option>
+        {autoList &&
+          autoList.map((value, index) => {
             return (
               <option value={value.type} key={index}>
                 {value.type}
