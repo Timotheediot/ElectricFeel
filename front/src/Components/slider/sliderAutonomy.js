@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AutosContext } from "../form/form";
 import { Range, getTrackBackground } from "react-range";
 
 const SliderAutonomy = () => {

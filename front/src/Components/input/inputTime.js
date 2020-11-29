@@ -1,16 +1,12 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { AutosContext } from "../form/form";
+const InputTime = () => {
+  const autoList = useContext(AutosContext);
+  const [reloadTime, setReloadTime] = useState();
 
-const InputTime = ({ autoList }) => {
-  //   const [autoSeat, setAutoSeat] = useState([]);
-
-  //   const fetchInputValue = async () => {
-  //     const res = await axios.get("http://localhost:4000/auto/seat");
-  //     setAutoSeat(res.data);
-  //   };
-
-  //   useEffect(() => {
-  //     fetchInputValue();
-  //   }, []);
+  const handleChange = (e) => {
+    setReloadTime(e.target.value);
+  };
 
   return (
     <>
