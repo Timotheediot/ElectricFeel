@@ -12,35 +12,24 @@ export const AutosContext = React.createContext();
 
 const Form = () => {
   const [autoList, setAutoList] = useState([]);
-  const [autoBrand, setAutoBrand] = useState();
-
-  // const getautoList = async () => {
-  //   try {
-  //     const res = await axios.get("http://localhost:4000/auto/autoList");
-  //     setAutoList(res.data);
-  //     console.log("autoList is :", autoList);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  const getAutoList = async () => {
-    const res = await axios.get("http://localhost:4000/auto/brand");
-    setAutoBrand(res.data);
-    console.log("axios brand Form:", res.data);
-  };
+  const [brand, setBrand] = useState();
+  const [seat, setSeat] = useState();
+  const [type, setType] = useState();
+  const [price, setPrice] = useState([0, 10000]);
+  const [autonomy, setAutonomy] = useState();
+  const [reloadTime, setReloadTime] = useState();
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
-      brand: null,
-      seat: null,
-      type: null,
-      price: null,
-      autonomy: null,
-      reloadTime: null,
+      brand: brand,
+      seat: seat,
+      type: type,
+      price: price,
+      autonomy: autonomy,
+      reloadTime: reloadTime,
     });
     setAutoList(res.data);
-    console.log("axios Data Form:", res.data);
+    console.log("postvalue:", res.data);
   };
 
   // const handleChange = (e) => {
@@ -50,7 +39,6 @@ const Form = () => {
   // };
 
   useEffect(() => {
-    getAutoList();
     fetchInputValue();
   }, []);
 
@@ -67,7 +55,7 @@ const Form = () => {
         />
       </div>
       <form className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 mx-10 mt-10 mb-10">
-        <AutosContext.Provider value={autoList} brand={autoBrand}>
+        <AutosContext.Provider value={autoList}>
           <InputBrand />
           <InputSeat />
           <InputType />

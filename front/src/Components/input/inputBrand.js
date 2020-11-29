@@ -4,9 +4,8 @@ import { AutosContext } from "../form/form";
 const InputBrand = () => {
   const autoList = useContext(AutosContext);
   const [brand, setBrand] = useState();
-  const [autoBrand, setAutoBrand] = useState();
+
   console.log("autoList in inputBrand : ", autoList);
-  console.log("autoBrand in inputBrand : ", autoBrand);
 
   const sortByBrand = (a, b) => {
     if (a && b) {
