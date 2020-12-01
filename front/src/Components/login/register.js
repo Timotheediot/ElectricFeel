@@ -7,7 +7,7 @@ const Register = () => {
   const { register, handleSubmit, errors } = useForm();
   const history = useHistory();
 
-  ///////AXIOS PUT USER /////////
+  /////// PUT USER /////////
   const onSubmit = (data) => {
     fetch("http://localhost:4000/user/register", {
       method: "POST",
@@ -40,6 +40,7 @@ const Register = () => {
           </label>
           <input
             type="email"
+            aria-label="email"
             ref={register}
             name="email"
             placeholder="ton@email.com"
@@ -56,6 +57,7 @@ const Register = () => {
           </label>
           <input
             type="password"
+            aria-label="password"
             name="password"
             placeholder="Mot de passe"
             ref={register({ required: true, minLength: 8 })}
