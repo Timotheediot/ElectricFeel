@@ -7,6 +7,7 @@ import axios from "axios";
 import InputType from "../input/inputType";
 import SliderAutonomy from "../slider/sliderAutonomy";
 import InputTime from "../input/inputTime";
+import { useHistory } from "react-router-dom";
 
 export const AutosContext = createContext();
 
@@ -15,9 +16,10 @@ const Form = () => {
   const [brand, setBrand] = useState(null);
   const [seat, setSeat] = useState(null);
   const [type, setType] = useState(null);
-  const [price, setPrice] = useState([null, null]);
+  const [price, setPrice] = useState(null);
   const [autonomy, setAutonomy] = useState(null);
   const [reloadTime, setReloadTime] = useState(null);
+  const history = useHistory();
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
@@ -36,12 +38,27 @@ const Form = () => {
     fetchInputValue();
   }, []);
 
-  console.log("brand :", brand);
-  console.log("seat :", seat);
-  console.log("type :", type);
-  console.log("price :", price);
-  console.log("autonomy :", autonomy);
-  console.log("reloadTime :", reloadTime);
+  const auto = { brand, seat, type, price, autonomy, reloadTime };
+  // console.log("auto:", auto);
+
+  // console.log("brand :", brand);
+  // console.log("seat :", seat);
+  // console.log("type :", type);
+  // console.log("price :", price);
+  // console.log("autonomy :", autonomy);
+  // console.log("reloadTime :", reloadTime);
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    console.log(auto);
+    const res = axios
+      .get("http://localhost:4000/auto/")
+      .then((response) => {
+        setAutoList(response.data);
+      })
+      .then(history.push("/vehicules"))
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap focus:outline-none">
@@ -54,8 +71,12 @@ const Form = () => {
           alt="porsche 4s"
           className="w-auto md:mb-32 rounded-md"
         />
+        {/* {error ? <div></div>} */}
       </div>
-      <form className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 mx-10 mt-10 mb-10">
+      <form
+        className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 mx-10 mt-10 mb-10"
+        onSubmit={submitForm}
+      >
         <AutosContext.Provider
           value={{
             autoList,
@@ -76,7 +97,7 @@ const Form = () => {
           <InputTime />
         </AutosContext.Provider>
         <input
-          type="button"
+          type="submit"
           value="CHERCHER"
           className="w-full px-4 py-2 rounded-md bg-gray-900 text-gray-200 tracking-wider cursor-pointer hover:bg-green-500 hover:text-gray-900"
         />
