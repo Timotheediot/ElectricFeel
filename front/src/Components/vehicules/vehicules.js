@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Card from "../card/card";
 import axios from "axios";
+import { AutosContext } from "../form/form";
 
 const Vehicules = () => {
   const [listAuto, setListAuto] = useState([]);
 
-  // const fetchInputValue = async () => {
-  //   const res = await axios.get("http://localhost:4000/auto");
-  //   setListAuto(res.data);
-  // };
+  const fetchInputValue = async () => {
+    const res = await axios.get("http://localhost:4000/auto");
+    setListAuto(res.data);
+  };
 
-  // useEffect(() => {
-  //   fetchInputValue();
-  // }, []);
+  useEffect(() => {
+    fetchInputValue();
+  }, []);
 
   return (
     <div>

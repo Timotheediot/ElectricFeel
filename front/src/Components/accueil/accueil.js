@@ -1,12 +1,12 @@
-import React from "react";
-import Form from "../form/form";
+// import React from "react";
+// import Form from "../form/form";
 
-const Accueil = () => {
-  return (
-    <div className="h-full">
-      <Form />
-    </div>
-  );
-};
+// const Accueil = () => {
+//   return (
+//     <div className="h-full">
+//       <Form />
+//     </div>
+//   );
+// };
 
-export default Accueil;
+// export default Accueil;

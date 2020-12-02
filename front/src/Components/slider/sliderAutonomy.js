@@ -10,7 +10,7 @@ const SliderAutonomy = () => {
   const MAX = 1000;
   return (
     <>
-      <h2 className="text-gray-300 text-lg mb-2">Automie en kilomètres</h2>
+      <h2 className="text-gray-300 text-lg mb-2">Autonomie</h2>
       <div
         style={{
           display: "flex",

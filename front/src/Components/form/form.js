@@ -1,9 +1,9 @@
 import React, { useState, useEffect, createContext } from "react";
+import axios from "axios";
 import InputBrand from "../input/inputBrand";
 import InputSeat from "../input/inputSeat";
 import Porsche from "../../assets/img/porscheModel.png";
 import SliderPrice from "../slider/sliderPrice";
-import axios from "axios";
 import InputType from "../input/inputType";
 import SliderAutonomy from "../slider/sliderAutonomy";
 import InputTime from "../input/inputTime";
@@ -31,7 +31,7 @@ const Form = () => {
       reloadTime: reloadTime,
     });
     setAutoList(res.data);
-    console.log("autoList in post request", autoList);
+    console.log("autoList in post request", res.data);
     // .then(history.push("/vehicules"));
   };
 
@@ -39,7 +39,7 @@ const Form = () => {
     fetchInputValue();
   }, []);
 
-  // console.log("brand :", brand);
+  console.log(brand);
   // console.log("seat :", seat);
   // console.log("type :", type);
   // console.log("price :", price);
