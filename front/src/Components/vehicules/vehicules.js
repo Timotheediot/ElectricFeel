@@ -5,14 +5,14 @@ import axios from "axios";
 const Vehicules = () => {
   const [listAuto, setListAuto] = useState([]);
 
-  const fetchInputValue = async () => {
-    const res = await axios.get("http://localhost:4000/auto");
-    setListAuto(res.data);
-  };
+  // const fetchInputValue = async () => {
+  //   const res = await axios.get("http://localhost:4000/auto");
+  //   setListAuto(res.data);
+  // };
 
-  useEffect(() => {
-    fetchInputValue();
-  }, []);
+  // useEffect(() => {
+  //   fetchInputValue();
+  // }, []);
 
   return (
     <div>

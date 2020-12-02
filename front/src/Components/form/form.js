@@ -32,14 +32,12 @@ const Form = () => {
     });
     setAutoList(res.data);
     console.log("autoList in post request", autoList);
+    // .then(history.push("/vehicules"));
   };
 
   useEffect(() => {
     fetchInputValue();
   }, []);
-
-  const auto = { brand, seat, type, price, autonomy, reloadTime };
-  // console.log("auto:", auto);
 
   // console.log("brand :", brand);
   // console.log("seat :", seat);
@@ -48,17 +46,17 @@ const Form = () => {
   // console.log("autonomy :", autonomy);
   // console.log("reloadTime :", reloadTime);
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    console.log(auto);
-    const res = axios
-      .get("http://localhost:4000/auto/")
-      .then((response) => {
-        setAutoList(response.data);
-      })
-      .then(history.push("/vehicules"))
-      .catch((error) => console.log(error));
-  };
+  // const submitForm = async (e) => {
+  //   e.preventDefault();
+  //   console.log(auto);
+  //   const res = await axios
+  //     .get("http://localhost:4000/auto/")
+  //     .then((response) => {
+  //       setAutoList(response.data);
+  //     })
+  //     // .then(history.push("/vehicules"))
+  //     .catch((error) => console.log(error));
+  // };
 
   return (
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap focus:outline-none">
@@ -71,11 +69,10 @@ const Form = () => {
           alt="porsche 4s"
           className="w-auto md:mb-32 rounded-md"
         />
-        {/* {error ? <div></div>} */}
       </div>
       <form
         className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 mx-10 mt-10 mb-10"
-        onSubmit={submitForm}
+        onSubmit={fetchInputValue}
       >
         <AutosContext.Provider
           value={{

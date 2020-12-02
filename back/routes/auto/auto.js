@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/filter", (req, res) => {
-  let query = `SELECT DISTINCT a.id_brand, a.id_type, a.id_seat, a.autonomy, a.price, b.brand, t.type, s.seat, auterm.reloadTime FROM auto a JOIN brand b ON a.id_brand = b.id RIGHT JOIN type t ON a.id_type = t.id RIGHT JOIN seat s ON a.id_seat = s.id LEFT JOIN auto_terminal auterm on a.id=auterm.id_auto`;
+  let query = `SELECT DISTINCT a.id_brand, a.id_type, a.id_seat, a.autonomy, a.price, b.brand, t.type, s.seat, auterm.reloadTime, photo.url FROM auto a JOIN brand b ON a.id_brand = b.id JOIN photo ON a.id = photo.id RIGHT JOIN type t ON a.id_type = t.id RIGHT JOIN seat s ON a.id_seat = s.id LEFT JOIN auto_terminal auterm on a.id=auterm.id_auto`;
   let where = [];
   if (req.body.brand != null) {
     where.push(` b.brand = "${req.body.brand}"`);
