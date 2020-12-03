@@ -31,7 +31,7 @@ const Card = ({ auto }) => {
           </span>
           <p className="text-grey-darker text-base">{descriptionCard}…</p>
         </div>
-        <div className="px-6 py-4 flex">
+        <div className="px-6 py-4 flex justify-center">
           <span className="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">
             #{auto.type}
           </span>
@@ -41,6 +41,9 @@ const Card = ({ auto }) => {
           <span className="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker">
             #{auto.autonomy}km
           </span>
+        </div>
+        <div className=" flex justify-center px-3 py-1 text-xl font-semibold  text-gray-800 hover:text-grey-100 mb-1">
+          {auto.price}€
         </div>
       </div>
     </div>

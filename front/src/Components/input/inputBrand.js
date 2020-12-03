@@ -16,7 +16,7 @@ const InputBrand = () => {
   return (
     <>
       <select
-        className="w-full bg-gray-900 text-gray-500 h-10 px-5 rounded-lg text-sm focus:outline-none mb-10"
+        className="w-full bg-gray-900 text-gray-500 h-10 px-5 rounded-lg text-sm focus:outline-none mb-10 cursor-pointer"
         onChange={(e) => setBrand(e.target.value)}
       >
         <option value="">Choisir la marque</option>

@@ -11,13 +11,7 @@ const SliderAutonomy = () => {
   return (
     <>
       <h2 className="text-gray-300 text-lg mb-2">Autonomie</h2>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexWrap: "wrap",
-        }}
-      >
+      <div className="flex justify-center flex-wrap cursor-pointer">
         <Range
           values={autonomy.values}
           step={STEP}

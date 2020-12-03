@@ -12,7 +12,7 @@ const SliderPrice = () => {
   return (
     <>
       <h2 className="text-gray-300 text-lg mb-2">Prix</h2>
-      <div className="flex justify-center flex-wrap focus:outline-none">
+      <div className="flex justify-center flex-wrap focus:outline-none  cursor-pointer">
         <Range
           // onChange={(e) => handleChange(e)}
           values={price.values}
