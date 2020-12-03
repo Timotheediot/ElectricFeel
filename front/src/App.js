@@ -16,8 +16,8 @@ const App = () => {
   const [brand, setBrand] = useState(null);
   const [seat, setSeat] = useState(null);
   const [type, setType] = useState(null);
-  const [price, setPrice] = useState(null);
-  const [autonomy, setAutonomy] = useState(null);
+  const [price, setPrice] = useState({ values: [0, 110000] });
+  const [autonomy, setAutonomy] = useState({ values: [0, 1000] });
   const [reloadTime, setReloadTime] = useState(null);
 
   return (

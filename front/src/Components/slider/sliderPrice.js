@@ -3,8 +3,7 @@ import { AutosContext } from "../../App";
 import { Range, getTrackBackground } from "react-range";
 
 const SliderPrice = () => {
-  const autoList = useContext(AutosContext);
-  const [price, setPrice] = useState({ values: [0, 110000] });
+  const { price, setPrice } = useContext(AutosContext);
 
   const STEP = 100;
   const MIN = 0;

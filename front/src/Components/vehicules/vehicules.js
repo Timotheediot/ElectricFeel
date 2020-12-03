@@ -4,6 +4,8 @@ import axios from "axios";
 import { AutosContext } from "../../App";
 
 const Vehicules = () => {
+  const [carData, setCardata] = useState([]);
+
   const {
     autoList,
     setAutoList,
@@ -16,7 +18,7 @@ const Vehicules = () => {
   } = useContext(AutosContext);
 
   const fetchInputValue = async () => {
-    const res = await axios.post("http://localhost:4000/auto/", {
+    const res = await axios.post("http://localhost:4000/auto/auto", {
       brand: brand,
       seat: seat,
       type: type,
@@ -24,14 +26,21 @@ const Vehicules = () => {
       autonomy: autonomy,
       reloadTime: reloadTime,
     });
-    setAutoList(res.data);
+    setCardata(res.data);
   };
+
+  useEffect(async () => {
+    fetchInputValue();
+  }, []);
+
+  console.log("brand in vehicules", brand);
+  console.log("cardata", carData);
 
   return (
     <div>
       <div className="flex flex-wrap w-fulls justify-around mt-10">
-        {autoList &&
-          autoList.map((auto, index) => {
+        {carData &&
+          carData.map((auto, index) => {
             return <Card key={index} auto={auto} />;
           })}
       </div>

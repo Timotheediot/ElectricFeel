@@ -3,7 +3,7 @@ import { AutosContext } from "../../App";
 import { Range, getTrackBackground } from "react-range";
 
 const SliderAutonomy = () => {
-  const [state, setState] = useState({ values: [0, 1000] });
+  const { autoList, autonomy, setAutonomy } = useContext(AutosContext);
 
   const STEP = 50;
   const MIN = 0;
@@ -19,12 +19,12 @@ const SliderAutonomy = () => {
         }}
       >
         <Range
-          values={state.values}
+          values={autonomy.values}
           step={STEP}
           min={MIN}
           max={MAX}
           onChange={(values) => {
-            setState({ values });
+            setAutonomy({ values });
           }}
           renderTrack={({ props, children }) => (
             <div
@@ -37,7 +37,7 @@ const SliderAutonomy = () => {
                 ref={props.ref}
                 style={{
                   background: getTrackBackground({
-                    values: state.values,
+                    values: autonomy.values,
                     colors: ["#1a202c", "#dd6b20", "#1a202c"],
                     min: MIN,
                     max: MAX,
@@ -65,8 +65,8 @@ const SliderAutonomy = () => {
           )}
         />
         <output className="text-md text-white mt-2 mb-8 ">
-          {state.values[0]}
-          {"km"} - {state.values[1]}
+          {autonomy.values[0]}
+          {"km"} - {autonomy.values[1]}
           {"km"}
         </output>
       </div>

@@ -11,16 +11,18 @@ import { useHistory } from "react-router-dom";
 import { AutosContext } from "../../App";
 
 const Form = () => {
-  const { autoList, setAutoList } = useContext(AutosContext);
+  const {
+    autoList,
+    brand,
+    seat,
+    type,
+    price,
+    autonomy,
+    reloadTime,
+    setAutoList,
+  } = useContext(AutosContext);
 
   const history = useHistory();
-
-  const [brand, setBrand] = useState(null);
-  const [seat, setSeat] = useState(null);
-  const [type, setType] = useState(null);
-  const [price, setPrice] = useState(null);
-  const [autonomy, setAutonomy] = useState(null);
-  const [reloadTime, setReloadTime] = useState(null);
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
@@ -37,7 +39,7 @@ const Form = () => {
 
   useEffect(() => {
     fetchInputValue();
-  }, [brand, seat, type, reloadTime]);
+  }, [brand, seat, type, reloadTime, autonomy, price]);
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -49,6 +51,7 @@ const Form = () => {
       })
       .then(history.push("/vehicules"));
   };
+  console.log("brand", brand);
 
   return (
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap focus:outline-none">
