@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
     }
   );
 });
-// form
+// FORM
 router.post("/filter", (req, res) => {
   let query = `SELECT DISTINCT a.id_brand, a.id_type, a.id_seat, a.autonomy, a.price, b.brand, t.type, s.seat, auterm.reloadTime, photo.url FROM auto a JOIN brand b ON a.id_brand = b.id JOIN photo ON a.id = photo.id RIGHT JOIN type t ON a.id_type = t.id RIGHT JOIN seat s ON a.id_seat = s.id LEFT JOIN auto_terminal auterm on a.id=auterm.id_auto`;
   let where = [];
@@ -59,7 +59,8 @@ router.post("/filter", (req, res) => {
     }
   });
 });
-// result
+
+// RESULT
 router.post("/auto", (req, res) => {
   let query = `SELECT a.id as "id_auto", a.id_brand, a.id_seat, a.id_type, a.autonomy, a.power, a.auto as "model_auto", a.description, a.date, a.color, a.price, p.url, b.brand, s.seat, t.type, auterm.reloadTime, electerm.longitude, electerm.latitude FROM auto a LEFT JOIN photo p ON a.id = p.id_auto JOIN brand b ON a.id_brand = b.id RIGHT JOIN type t ON a.id_type = t.id RIGHT JOIN seat s ON a.id_seat = s.id LEFT JOIN auto_terminal auterm on a.id=auterm.id_auto LEFT JOIN electricterminals electerm on auterm.id_electricTerminals=electerm.id`;
   let where = [];
@@ -104,71 +105,5 @@ router.post("/auto", (req, res) => {
     }
   });
 });
-
-// router.get("/brand", (req, res) => {
-//   connection.query(
-//     `SELECT * from auto  LEFT JOIN brand b ON auto.id_brand = b.id`,
-//     (err, results) => {
-//       if (err) {
-//         res.status(500).send(`Erreur lors de la récupération des marques`);
-//       } else {
-//         res.json(results);
-//       }
-//     }
-//   );
-// });
-
-// router.get("/price", (req, res) => {
-//   connection.query(
-//     `SELECT *  FROM auto WHERE price BETWEEN ${req[0]} AND ${req[1]}`,
-//     (err, results) => {
-//       if (err) {
-//         res.status(500).send(`Erreur lors de la récupération des prices`);
-//       } else {
-//         res.json(results);
-//       }
-//     }
-//   );
-// });
-
-// router.get("/autonomy", (req, res) => {
-//   connection.query(`SELECT  DISTINCT * FROM auto_terminal`, (err, results) => {
-//     if (err) {
-//       res.status(500).send(`Erreur lors de la récupération des autonomies`);
-//     } else {
-//       res.json(results);
-//     }
-//   });
-// });
-
-// router.get("/seat", (req, res) => {
-//   connection.query(`SELECT seat from seat`, (err, results) => {
-//     if (err) {
-//       res.status(500).send(`Erreur lors de la récupération des places`);
-//     } else {
-//       res.json(results);
-//     }
-//   });
-// });
-
-// router.get("/type", (req, res) => {
-//   connection.query(`SELECT DISTINCT * FROM type`, (err, results) => {
-//     if (err) {
-//       res.status(500).send(`Erreur lors de la récupération des places`);
-//     } else {
-//       res.json(results);
-//     }
-//   });
-// });
-
-// router.get("/price", (req, res) => {
-//   connection.query(`SELECT * FROM auto WHERE price BETWEEN`, (err, results) => {
-//     if (err) {
-//       res.status(500).send(`Erreur lors de la récupération des prix des autos`);
-//     } else {
-//       res.json(results);
-//     }
-//   });
-// });
 
 module.exports = router;
