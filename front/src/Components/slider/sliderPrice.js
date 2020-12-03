@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { AutosContext } from "../../App";
 import { Range, getTrackBackground } from "react-range";
 
@@ -9,16 +9,12 @@ const SliderPrice = () => {
   const MIN = 0;
   const MAX = 110000;
 
-  const handleChange = (e) => {
-    setPrice(e.target.value);
-  };
-
   return (
     <>
       <h2 className="text-gray-300 text-lg mb-2">Prix</h2>
       <div className="flex justify-center flex-wrap focus:outline-none">
         <Range
-          onChange={(e) => handleChange(e)}
+          // onChange={(e) => handleChange(e)}
           values={price.values}
           step={STEP}
           min={MIN}

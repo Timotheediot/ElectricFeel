@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { AutosContext } from "../../App";
 import { Range, getTrackBackground } from "react-range";
 
 const SliderAutonomy = () => {
-  const { autoList, autonomy, setAutonomy } = useContext(AutosContext);
+  const { autonomy, setAutonomy } = useContext(AutosContext);
 
   const STEP = 50;
   const MIN = 0;

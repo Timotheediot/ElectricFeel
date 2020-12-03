@@ -31,14 +31,14 @@ const Card = ({ auto }) => {
           </span>
           <p className="text-grey-darker text-base">{descriptionCard}…</p>
         </div>
-        <div class="px-6 py-4 flex">
-          <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">
+        <div className="px-6 py-4 flex">
+          <span className="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">
             #{auto.type}
           </span>
-          <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">
+          <span className="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">
             #{auto.power}kWh
           </span>
-          <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker">
+          <span className="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker">
             #{auto.autonomy}km
           </span>
         </div>

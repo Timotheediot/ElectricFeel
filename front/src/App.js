@@ -1,5 +1,4 @@
 import React, { useState, createContext } from "react";
-import Accueil from "./Components/accueil/accueil";
 import Favoris from "./Components/favoris/favoris";
 import Footer from "./Components/footer/footer";
 import Login from "./Components/login/login";

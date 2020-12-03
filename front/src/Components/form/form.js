@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import axios from "axios";
 import InputBrand from "../input/inputBrand";
 import InputSeat from "../input/inputSeat";
@@ -12,7 +12,6 @@ import { AutosContext } from "../../App";
 
 const Form = () => {
   const {
-    autoList,
     brand,
     seat,
     type,
@@ -44,7 +43,7 @@ const Form = () => {
   const submitForm = async (e) => {
     e.preventDefault();
 
-    const res = await axios
+    await axios
       .post("http://localhost:4000/auto/")
       .then((response) => {
         setAutoList(response.data);
