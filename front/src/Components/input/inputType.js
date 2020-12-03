@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { AutosContext } from "../form/form";
+import { AutosContext } from "../../App";
 
 const InputType = () => {
   const { autoList, setType } = useContext(AutosContext);

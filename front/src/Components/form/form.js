@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import axios from "axios";
 import InputBrand from "../input/inputBrand";
 import InputSeat from "../input/inputSeat";
@@ -8,18 +8,19 @@ import InputType from "../input/inputType";
 import SliderAutonomy from "../slider/sliderAutonomy";
 import InputTime from "../input/inputTime";
 import { useHistory } from "react-router-dom";
-
-export const AutosContext = createContext();
+import { AutosContext } from "../../App";
 
 const Form = () => {
-  const [autoList, setAutoList] = useState([]);
+  const { autoList, setAutoList } = useContext(AutosContext);
+
+  const history = useHistory();
+
   const [brand, setBrand] = useState(null);
   const [seat, setSeat] = useState(null);
   const [type, setType] = useState(null);
   const [price, setPrice] = useState(null);
   const [autonomy, setAutonomy] = useState(null);
   const [reloadTime, setReloadTime] = useState(null);
-  const history = useHistory();
 
   const fetchInputValue = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
@@ -31,32 +32,23 @@ const Form = () => {
       reloadTime: reloadTime,
     });
     setAutoList(res.data);
-    console.log("autoList in post request", res.data);
-    // .then(history.push("/vehicules"));
+    console.log("form:", res.data);
   };
 
   useEffect(() => {
     fetchInputValue();
-  }, []);
+  }, [brand, seat, type, reloadTime]);
 
-  console.log(brand);
-  // console.log("seat :", seat);
-  // console.log("type :", type);
-  // console.log("price :", price);
-  // console.log("autonomy :", autonomy);
-  // console.log("reloadTime :", reloadTime);
+  const submitForm = async (e) => {
+    e.preventDefault();
 
-  // const submitForm = async (e) => {
-  //   e.preventDefault();
-  //   console.log(auto);
-  //   const res = await axios
-  //     .get("http://localhost:4000/auto/")
-  //     .then((response) => {
-  //       setAutoList(response.data);
-  //     })
-  //     // .then(history.push("/vehicules"))
-  //     .catch((error) => console.log(error));
-  // };
+    const res = await axios
+      .post("http://localhost:4000/auto/")
+      .then((response) => {
+        setAutoList(response.data);
+      })
+      .then(history.push("/vehicules"));
+  };
 
   return (
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap focus:outline-none">
@@ -72,27 +64,16 @@ const Form = () => {
       </div>
       <form
         className="w-full md:w-1/2 bg-gray-800 rounded-md p-10 mx-10 mt-10 mb-10"
-        onSubmit={fetchInputValue}
+        onSubmit={submitForm}
       >
-        <AutosContext.Provider
-          value={{
-            autoList,
-            setBrand,
-            setSeat,
-            setType,
-            setPrice,
-            setAutonomy,
-            setReloadTime,
-          }}
-        >
-          <InputBrand />
-          <InputSeat />
-          <InputType />
-          <SliderPrice />
-          <hr className="border-2 border-gray-900 rounded-full mb-5" />
-          <SliderAutonomy />
-          <InputTime />
-        </AutosContext.Provider>
+        <InputBrand />
+        <InputSeat />
+        <InputType />
+        <SliderPrice />
+        <hr className="border-2 border-gray-900 rounded-full mb-5" />
+        <SliderAutonomy />
+        <InputTime />
+
         <input
           type="submit"
           value="CHERCHER"

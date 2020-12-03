@@ -61,7 +61,49 @@ router.post("/filter", (req, res) => {
   });
 });
 
-router.post("/vehicules/filters", (req, res) => {});
+router.post("/auto", (req, res) => {
+  let query = `SELECT a.id as "id_auto", a.id_brand, a.id_type, a.autonomy, a.power, a.auto as "model_auto", a.description, a.date, a.color, a.price, p.url, b.brand, t.type, auterm.reloadTime, electerm.longitude, electerm.latitude FROM auto a LEFT JOIN photo p ON a.id = p.id_auto JOIN brand b ON a.id_brand = b.id RIGHT JOIN type t ON a.id_type = t.id LEFT JOIN auto_terminal auterm on a.id=auterm.id_auto LEFT JOIN electricterminals electerm on auterm.id_electricTerminals=electerm.id ORDER BY a.auto`;
+  let where = [];
+  if (req.body.brand != null) {
+    where.push(` b.brand = "${req.body.brand}"`);
+  }
+  if (req.body.seat != null) {
+    where.push(` s.seat = "${req.body.seat}"`);
+  }
+  if (req.body.type != null) {
+    where.push(` t.type = "${req.body.type}"`);
+  }
+  if (req.body.price != null) {
+    where = where.push(
+      ` price BETWEEN "${req.body.price[0]}" AND "${req.body.price[1]}"`
+    );
+  }
+  if (req.body.autonomy != null) {
+    where.push(
+      ` autonomy BETWEEN "${req.body.autonomy[0]}" AND "${req.body.autonomy[1]}"`
+    );
+  }
+  if (req.body.reloadTime != null) {
+    where.push(` at.reloadTime = "${req.body.reloadTime}"`);
+  }
+  let whereQuery = "";
+  let andQuery = "";
+  if (where.length > 0) {
+    whereQuery = whereQuery + ` WHERE` + where[0];
+    for (let i = 1; i < where.length; i++) {
+      andQuery = andQuery + ` AND` + where[i];
+    }
+    whereQuery = whereQuery + andQuery;
+  }
+  connection.query(query + whereQuery, (err, results) => {
+    if (err) {
+      res.status(500).send(`Erreur lors de la récupération du filtre`);
+    } else {
+      console.log(results);
+      res.json(results);
+    }
+  });
+});
 
 // router.get("/brand", (req, res) => {
 //   connection.query(

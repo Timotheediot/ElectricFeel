@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { AutosContext } from "../form/form";
+import { AutosContext } from "../../App";
 const InputTime = () => {
   const { autoList, setReloadTime } = useContext(AutosContext);
 

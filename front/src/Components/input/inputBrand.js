@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { AutosContext } from "../form/form";
+import { AutosContext } from "../../App";
 
 const InputBrand = () => {
   const { autoList, setBrand } = useContext(AutosContext);
@@ -11,8 +11,8 @@ const InputBrand = () => {
   //   }
   //   return 0;
   // };
-
-  // console.log(autoList);
+  // console.log(AutosContext);
+  console.log("autolist in inputbrand", autoList);
 
   return (
     <>
