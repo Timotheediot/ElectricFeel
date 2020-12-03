@@ -43,7 +43,7 @@ const Card = ({ auto }) => {
           </span>
         </div>
         <div className=" flex justify-center px-3 py-1 text-xl font-semibold  text-gray-800 hover:text-grey-100 mb-1">
-          {auto.price}€
+          <p className="text-gray-800 hover:text-gray-700">{auto.price}€</p>
         </div>
       </div>
     </div>
