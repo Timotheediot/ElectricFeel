@@ -1,4 +1,3 @@
-// REQUIRE what we need :
 const bcrypt = require("bcryptjs");
 const connection = require("../../config/config");
 const express = require("express");
@@ -6,13 +5,12 @@ const router = express.Router();
 
 router.use(express.json());
 
-// ENTRY POINT :
-
+//ENTRY
 router.get("/", (req, res) => {
   res.send("On the road user").status(200);
 });
 
-// REGISTER
+//REGISTER
 router.post("/register", async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
   const user = {
@@ -29,7 +27,7 @@ router.post("/register", async (req, res) => {
   });
 });
 
-// LOGIN
+//LOGIN
 router.post("/login", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;

@@ -2,7 +2,7 @@ const express = require("express");
 const connection = require("../../config/config");
 const router = express.Router();
 
-// ENTRY POINT :
+//ENTRY
 router.get("/", (req, res) => {
   connection.query(
     `SELECT a.id as "id_auto", a.id_brand, a.id_type, a.autonomy, a.power, a.auto as "model_auto", a.description, a.date, a.color, a.price, p.url, b.brand, t.type, auterm.reloadTime, electerm.longitude, electerm.latitude FROM auto a LEFT JOIN photo p ON a.id = p.id_auto JOIN brand b ON a.id_brand = b.id RIGHT JOIN type t ON a.id_type = t.id LEFT JOIN auto_terminal auterm on a.id=auterm.id_auto LEFT JOIN electricterminals electerm on auterm.id_electricTerminals=electerm.id ORDER BY a.auto`,
@@ -16,7 +16,8 @@ router.get("/", (req, res) => {
     }
   );
 });
-// FORM
+
+//FORM
 router.post("/filter", (req, res) => {
   let query = `SELECT DISTINCT a.id_brand, a.id_type, a.id_seat, a.autonomy, a.price, b.brand, t.type, s.seat, auterm.reloadTime, photo.url FROM auto a JOIN brand b ON a.id_brand = b.id JOIN photo ON a.id = photo.id RIGHT JOIN type t ON a.id_type = t.id RIGHT JOIN seat s ON a.id_seat = s.id LEFT JOIN auto_terminal auterm on a.id=auterm.id_auto`;
   let where = [];
@@ -60,7 +61,7 @@ router.post("/filter", (req, res) => {
   });
 });
 
-// RESULT
+//RESULT CARDS
 router.post("/auto", (req, res) => {
   let query = `SELECT a.id as "id_auto", a.id_brand, a.id_seat, a.id_type, a.autonomy, a.power, a.auto as "model_auto", a.description, a.date, a.color, a.price, p.url, b.brand, s.seat, t.type, auterm.reloadTime, electerm.longitude, electerm.latitude FROM auto a LEFT JOIN photo p ON a.id = p.id_auto JOIN brand b ON a.id_brand = b.id RIGHT JOIN type t ON a.id_type = t.id RIGHT JOIN seat s ON a.id_seat = s.id LEFT JOIN auto_terminal auterm on a.id=auterm.id_auto LEFT JOIN electricterminals electerm on auterm.id_electricTerminals=electerm.id`;
   let where = [];

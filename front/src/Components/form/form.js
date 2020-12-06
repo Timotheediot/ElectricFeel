@@ -33,7 +33,6 @@ const Form = () => {
       reloadTime: reloadTime,
     });
     setAutoList(res.data);
-    console.log("form:", res.data);
   };
 
   useEffect(() => {
@@ -50,7 +49,6 @@ const Form = () => {
       })
       .then(history.push("/vehicules"));
   };
-  console.log("brand", brand);
 
   return (
     <div className="w-full h-full flex flex-wrap md:flex-no-wrap focus:outline-none">
