@@ -23,7 +23,7 @@ const Form = () => {
 
   const history = useHistory();
 
-  const fetchInputValue = async () => {
+  const fetchValues = async () => {
     const res = await axios.post("http://localhost:4000/auto/filter/", {
       brand: brand,
       seat: seat,
@@ -36,7 +36,7 @@ const Form = () => {
   };
 
   useEffect(() => {
-    fetchInputValue();
+    fetchValues();
   }, [brand, seat, type, reloadTime, autonomy, price]);
 
   const submitForm = async (e) => {
