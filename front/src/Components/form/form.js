@@ -41,7 +41,6 @@ const Form = () => {
 
   const submitForm = async (e) => {
     e.preventDefault();
-
     await axios
       .post("http://localhost:4000/auto/")
       .then((response) => {
