@@ -20,12 +20,16 @@ const App = () => {
   const [reloadTime, setReloadTime] = useState(null);
 
   const [brandList, setBrandList] = useState(null);
+  const [typeList, setTypeList] = useState(null);
+  const [seatList, setSeatList] = useState(null);
 
   return (
     <div className="bg-gray-900 content h-full">
       <AutosContext.Provider
         value={{
           brandList,
+          typeList,
+          seatList,
           autoList,
           brand,
           seat,
@@ -41,6 +45,8 @@ const App = () => {
           setAutonomy,
           setReloadTime,
           setBrandList,
+          setTypeList,
+          setSeatList,
         }}
       >
         <Router>

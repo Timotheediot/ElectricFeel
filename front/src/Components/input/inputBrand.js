@@ -2,16 +2,7 @@ import React, { useContext } from "react";
 import { AutosContext } from "../../App";
 
 const InputBrand = () => {
-  const { autoList, setBrand, brandList } = useContext(AutosContext);
-
-  // const sortByBrand = (a, b) => {
-  //   if (a && b) {
-  //     if (a.brand < b.brand) return -1;
-  //     if (a.brand > b.brand) return 1;
-  //   }
-  //   return 0;
-  // };
-  // console.log(AutosContext);
+  const { setBrand, brandList } = useContext(AutosContext);
 
   return (
     <>
@@ -23,7 +14,7 @@ const InputBrand = () => {
         {brandList &&
           brandList.sort().map((value, index) => {
             return (
-              <option value={value.brand} key={index}>
+              <option value={value} key={index}>
                 {value}
               </option>
             );

@@ -2,7 +2,9 @@ import React, { useContext } from "react";
 import { AutosContext } from "../../App";
 
 const InputSeat = () => {
-  const { autoList, setSeat } = useContext(AutosContext);
+  const { seatList, setSeat, seat } = useContext(AutosContext);
+
+  console.log("seatList", seatList);
 
   return (
     <>
@@ -12,11 +14,11 @@ const InputSeat = () => {
         // value={seat ? seat : null}
       >
         <option value="">Choisir le nombre de places</option>
-        {autoList &&
-          autoList.map((value, index) => {
+        {seatList &&
+          seatList.sort().map((value, index) => {
             return (
-              <option value={value.seat} key={index}>
-                {value.seat} places
+              <option value={value} key={index}>
+                {value} places
               </option>
             );
           })}

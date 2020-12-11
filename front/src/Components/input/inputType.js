@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AutosContext } from "../../App";
 
 const InputType = () => {
-  const { autoList, setType } = useContext(AutosContext);
+  const { setType, typeList } = useContext(AutosContext);
 
   return (
     <>
@@ -11,11 +11,11 @@ const InputType = () => {
         onChange={(e) => setType(e.target.value)}
       >
         <option value="">Choisir le type</option>
-        {autoList &&
-          autoList.map((value, index) => {
+        {typeList &&
+          typeList.sort().map((value, index) => {
             return (
-              <option value={value.type} key={index}>
-                {value.type}
+              <option value={value} key={index}>
+                {value}
               </option>
             );
           })}
