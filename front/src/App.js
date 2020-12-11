@@ -22,6 +22,7 @@ const App = () => {
   const [brandList, setBrandList] = useState(null);
   const [typeList, setTypeList] = useState(null);
   const [seatList, setSeatList] = useState(null);
+  const [timeList, setTimeList] = useState(null);
 
   return (
     <div className="bg-gray-900 content h-full">
@@ -30,6 +31,7 @@ const App = () => {
           brandList,
           typeList,
           seatList,
+          timeList,
           autoList,
           brand,
           seat,
@@ -47,6 +49,7 @@ const App = () => {
           setBrandList,
           setTypeList,
           setSeatList,
+          setTimeList,
         }}
       >
         <Router>

@@ -22,6 +22,7 @@ const Form = () => {
     setBrandList,
     setTypeList,
     setSeatList,
+    setTimeList,
   } = useContext(AutosContext);
 
   const history = useHistory();
@@ -40,6 +41,7 @@ const Form = () => {
     setBrandList(res.data.brandList);
     setTypeList(res.data.typeList);
     setSeatList(res.data.seatList);
+    setTimeList(res.data.timeList);
   };
 
   useEffect(() => {

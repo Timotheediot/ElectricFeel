@@ -71,6 +71,7 @@ router.post("/filter", (req, res) => {
         brandList: Distinct(results, "brand").filter(Unique),
         typeList: Distinct(results, "type").filter(Unique),
         seatList: Distinct(results, "seat").filter(Unique),
+        timeList: Distinct(results, "reloadTime").filter(Unique),
       };
       res.json(filteredResults);
       console.log("filteredResults", filteredResults);

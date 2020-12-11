@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import { AutosContext } from "../../App";
 
 const InputSeat = () => {
-  const { seatList, setSeat, seat } = useContext(AutosContext);
-
-  console.log("seatList", seatList);
+  const { seatList, setSeat } = useContext(AutosContext);
 
   return (
     <>

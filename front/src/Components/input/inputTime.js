@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AutosContext } from "../../App";
 const InputTime = () => {
-  const { autoList, setReloadTime } = useContext(AutosContext);
+  const { timeList, setReloadTime } = useContext(AutosContext);
 
   return (
     <>
@@ -10,14 +10,20 @@ const InputTime = () => {
         onChange={(e) => setReloadTime(e.target.value)}
       >
         <option>Choisir le temps de rechagement</option>
-        {autoList &&
-          autoList.map((value, index) => {
-            return (
-              <option value={value.reloadTime} key={index}>
-                {value.reloadTime} heures
-              </option>
-            );
-          })}
+        {timeList &&
+          timeList
+            .sort((a, b) => {
+              return a - b;
+            })
+            .map((value, index) => {
+              if (value != null) {
+                return (
+                  <option value={value} key={index}>
+                    {value} heures
+                  </option>
+                );
+              }
+            })}
       </select>
     </>
   );
