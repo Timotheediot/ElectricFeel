@@ -21,7 +21,7 @@ const InputBrand = () => {
       >
         <option value="">Choisir la marque</option>
         {brandList &&
-          brandList.map((value, index) => {
+          brandList.sort().map((value, index) => {
             return (
               <option value={value.brand} key={index}>
                 {value}
