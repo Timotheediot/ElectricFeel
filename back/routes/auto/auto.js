@@ -74,7 +74,6 @@ router.post("/filter", (req, res) => {
         timeList: Distinct(results, "reloadTime").filter(Unique),
       };
       res.json(filteredResults);
-      console.log("filteredResults", filteredResults);
     }
   });
 });
