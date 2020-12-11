@@ -12,6 +12,7 @@ import { AutosContext } from "../../App";
 
 const Form = () => {
   const {
+    brandList,
     brand,
     seat,
     type,
@@ -19,6 +20,7 @@ const Form = () => {
     autonomy,
     reloadTime,
     setAutoList,
+    setBrandList,
   } = useContext(AutosContext);
 
   const history = useHistory();
@@ -32,7 +34,9 @@ const Form = () => {
       autonomy: autonomy,
       reloadTime: reloadTime,
     });
-    setAutoList(res.data);
+    setAutoList(res.data.data);
+
+    setBrandList(res.data.brandList);
   };
 
   useEffect(() => {

@@ -17,9 +17,19 @@ router.get("/", (req, res) => {
   );
 });
 
+const Distinct = (obj, field) => {
+  return obj.map((item) => {
+    return item[field];
+  });
+};
+
+const Unique = (value, index, self) => {
+  return self.indexOf(value) === index;
+};
+
 //FORM
 router.post("/filter", (req, res) => {
-  let query = `SELECT DISTINCT a.id_brand, a.id_type, a.id_seat, a.autonomy, a.price, b.brand, t.type, s.seat, auterm.reloadTime, photo.url FROM auto a JOIN brand b ON a.id_brand = b.id JOIN photo ON a.id = photo.id RIGHT JOIN type t ON a.id_type = t.id RIGHT JOIN seat s ON a.id_seat = s.id LEFT JOIN auto_terminal auterm on a.id=auterm.id_auto`;
+  let query = `SELECT a.id_brand, a.id_type, a.id_seat, a.autonomy, a.price, b.brand, t.type, s.seat, auterm.reloadTime, photo.url FROM auto a JOIN brand b ON a.id_brand = b.id JOIN photo ON a.id = photo.id RIGHT JOIN type t ON a.id_type = t.id RIGHT JOIN seat s ON a.id_seat = s.id LEFT JOIN auto_terminal auterm on a.id=auterm.id_auto`;
   let where = [];
   if (req.body.brand != null) {
     where.push(` b.brand = "${req.body.brand}"`);
@@ -56,7 +66,13 @@ router.post("/filter", (req, res) => {
     if (err) {
       res.status(500).send(`Erreur lors de la récupération du filtre`);
     } else {
-      res.json(results);
+      const filteredResults = {
+        data: results,
+        brandList: Distinct(results, "brand").filter(Unique),
+        typeList: Distinct(results, "type").filter(Unique),
+      };
+      res.json(filteredResults);
+      console.log("filteredResults", filteredResults);
     }
   });
 });
